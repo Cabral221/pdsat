@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\Frontend\User\AccountController;
-use App\Http\Controllers\Frontend\User\DashboardController;
-use App\Http\Controllers\Frontend\User\ProfileController;
 use Tabuna\Breadcrumbs\Trail;
+use App\Http\Controllers\Frontend\ImputationController;
+use App\Http\Controllers\Frontend\User\AccountController;
+use App\Http\Controllers\Frontend\User\ProfileController;
+use App\Http\Controllers\Frontend\User\DashboardController;
 
 /*
  * These frontend controllers require the user to be logged in
@@ -28,3 +29,6 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
 
     Route::patch('profile/update', [ProfileController::class, 'update'])->name('profile.update');
 });
+
+Route::get('imputations', [ImputationController::class, 'index'])->name('imputation.index');
+Route::post('imputations', [ImputationController::class, 'store'])->name('imputation.store');
