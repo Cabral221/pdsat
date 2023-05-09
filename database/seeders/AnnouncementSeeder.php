@@ -30,7 +30,7 @@ class AnnouncementSeeder extends Seeder
             Announcement::create([
                 'area' => null,
                 'type' => 'info',
-                'message' => 'This is a <strong>Global</strong> announcement that will show on both the frontend and backend. <em>See <strong>AnnouncementSeeder</strong> for more usage examples.</em>',
+                'message' => 'Ce plateforme est en construction ! Merci de revenir ulterieurement. <em>Voir <strong>MDCSNEST - SG - CI </strong>.</em>',
                 'enabled' => true,
             ]);
 
