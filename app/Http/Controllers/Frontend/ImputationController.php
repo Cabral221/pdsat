@@ -20,17 +20,14 @@ class ImputationController extends Controller
         $request->validate([
             'sick_name' => 'required|string',
             'agent' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required|integer',
             'registration_number' => 'required|string',
             'service' => 'required|string',
         ]);
 
         // Enregistrer dans la base de données
-        $imputation = $imputationService->create([
-            'sick_name' => $request->sick_name,
-            'agent' =>  $request->agent,
-            'registration_number' =>  $request->registration_number,
-            'service' =>  $request->service,
-        ]);
+        $imputation = $imputationService->create($request->all());
 
         // Alert success message
         return redirect()

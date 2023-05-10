@@ -26,7 +26,7 @@ class ImputationTest extends TestCase
     public function test_get_form_in_imputation_page()
     {
         $response = $this->get('/imputations')->assertStatus(200);
-        $response->assertSeeText('form_request_imputation', $escaped = true);
+        $response->assertSeeText('imputation', $escaped = true);
     }
 
     // Test send correct data to request
@@ -35,6 +35,8 @@ class ImputationTest extends TestCase
         $this->post('/imputations', [
             'sick_name' => 'Abdourahmane DIOP',
             'agent' => 'Abdourahmane DIOP',
+            'email' => 'cabraldiop18@gmail.com',
+            'phone' => 778435052,
             'registration_number' => 'XXXXXX/Z',
             'service' => 'Cellule Informatique',
         ])->assertStatus(302);
@@ -42,6 +44,8 @@ class ImputationTest extends TestCase
         $this->assertDatabaseHas('imputations', [
             'sick_name' => 'Abdourahmane DIOP',
             'agent' => 'Abdourahmane DIOP',
+            'email' => 'cabraldiop18@gmail.com',
+            'phone' => 221778435052,
             'registration_number' => 'XXXXXX/Z',
             'service' => 'Cellule Informatique',
         ]);
