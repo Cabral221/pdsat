@@ -25,5 +25,15 @@ class ImputationService extends BaseService
         return $this->model::create($imputation);
     }
 
+    public function find(int $id)
+    {
+        return $this->model::find($id);
+    }
+
+    public function delete(Imputation $imputation)
+    {
+        return $imputation->delete();
+    }
+
 
 }

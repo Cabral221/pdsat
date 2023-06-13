@@ -15,11 +15,8 @@ class ImputationTest extends TestCase
     {
         // Test get url access
         $this->get('/imputations')->assertStatus(200);
-        // Test post imputation
-        $response = $this->post('/imputations');
-        $response->assertStatus(302);
-        // Tester l'annulation de demande
-        // ...
+        // Test post url
+       $this->post('/imputations')->assertStatus(302);
     }
 
     // Test get form on imputation page
@@ -39,7 +36,9 @@ class ImputationTest extends TestCase
             'phone' => 778435052,
             'registration_number' => 'XXXXXX/Z',
             'service' => 'Cellule Informatique',
-        ])->assertStatus(302);
+        ])->assertStatus(302)
+          ->assertRedirect('/imputations')
+          ->assertSessionHas(['success' => 'Votre Demande a bien été transmise au service Ressources Humaines du MDCSNEST']);
 
         $this->assertDatabaseHas('imputations', [
             'sick_name' => 'Abdourahmane DIOP',
@@ -56,4 +55,9 @@ class ImputationTest extends TestCase
     {
         $this->post('/imputations', [])->assertStatus(302);
     }
+
+
+    // Tester l'annulation de demande
+    // ...
+
 }

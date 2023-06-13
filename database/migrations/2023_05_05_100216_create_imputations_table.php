@@ -23,7 +23,7 @@ class CreateImputationsTable extends Migration
             $table->bigInteger('phone');
             $table->string('registration_number');
             $table->string('service');
-            $table->boolean('status')->default(false);
+            $table->boolean('status')->default(true);
             $table->boolean('validation')->default(false);
             $table->timestamps();
         });
