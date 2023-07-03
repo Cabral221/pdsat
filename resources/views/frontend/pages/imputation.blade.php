@@ -19,41 +19,49 @@
                     <x-slot name="body">
                         <form id="form_request_imputation" class="form" action="#" method="POST">
                             @csrf
-                            <div class="form-group">
-                              <label for="first_name">Exemple INPUT</label>
-                              <input type="text" class="form-control" id="first_name" aria-describedby="emailHelp" placeholder="Enter email">
-                              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="first_name">Prénom de l'agent</label>
-                                <input type="text" class="form-control" id="first_name" placeholder="Entrer votre prénom">
-                            </div>
-                            <div class="form-group">
-                                <label for="last_name">Nom de l'agent</label>
-                                <input type="text" class="form-control" id="last_name" placeholder="Entrer votre nom">
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Téléphone</label>
-                                <input type="phone" class="form-control" id="phone" placeholder="Ex : 771234567">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Adresse E-mail</label>
-                                <input type="email" class="form-control" id="email" placeholder="Ex : abc@abc.com">
-                            </div>
-                            <div class="form-group">
-                                <label for="matricule">Matricule de solde</label>
-                                <input type="text" class="form-control" id="matricule" placeholder="Ex : 123456/A">
-                            </div>
-                            <div class="form-group">
-                                <label for="service">Service</label>
-                                <input type="text" class="form-control" id="service" placeholder="Ex : Cellule Informatique">
-                            </div>
-                            <div class="form-group">
-                                <label for="sick_name">Penom et Nom du malade</label>
-                                <input type="text" class="form-control" id="sick_name" placeholder="Prénom et NOM de la personne malade">
-                            </div>
+
+                            <fieldset class="fielset">
+                                <legend>Informations personnelles de l'agent</legend>
+                                <div class="form-group">
+                                    <label for="first_name">Prénom de l'agent</label>
+                                    <input type="text" class="form-control" id="first_name" placeholder="Entrer votre prénom">
+                                </div>
+                                <div class="form-group">
+                                    <label for="last_name">Nom de l'agent</label>
+                                    <input type="text" class="form-control" id="last_name" placeholder="Entrer votre nom">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Téléphone</label>
+                                    <input type="phone" class="form-control" id="phone" placeholder="Ex : 771234567">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Adresse E-mail</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Ex : abc@abc.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="sick_name">Penom et Nom du malade</label>
+                                    <input type="text" class="form-control" id="sick_name" placeholder="Prénom et NOM de la personne malade">
+                                </div>
+                            </fieldset>
+                            <hr>
+                            <fieldset>
+                                <legend>Services</legend>
+                                <div class="form-group">
+                                    <label for="matricule">Matricule de solde</label>
+                                    <input type="text" class="form-control" id="matricule" placeholder="Ex : 123456/A">
+                                </div>
+                                <div class="form-group">
+                                    <label for="service">Service</label>
+                                    <input type="text" class="form-control" id="service" placeholder="Ex : Cellule Informatique">
+                                </div>
+                                <div class="form-group">
+                                    <label for="service">Fonction</label>
+                                    <input type="text" class="form-control" id="fonction" placeholder="Ex : Informaticien">
+                                </div>
+                            </fieldset>
+
                             <button type="submit" class="btn btn-primary">Soumettre</button>
-                          </form>
+                        </form>
                     </x-slot>
                 </x-frontend.card>
             </div><!--col-md-10-->

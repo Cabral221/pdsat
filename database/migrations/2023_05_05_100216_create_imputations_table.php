@@ -15,14 +15,19 @@ class CreateImputationsTable extends Migration
     {
         Schema::create('imputations', function (Blueprint $table) {
             $table->id();
+
             $table->float('load_employe')->default(0.2);
             $table->float('load_employer')->default(0.8);
+
             $table->string('sick_name');
             $table->string('agent');
             $table->string('email');
             $table->bigInteger('phone');
+
             $table->string('registration_number');
             $table->string('service');
+            $table->string('fonction');
+
             $table->boolean('status')->default(true);
             $table->boolean('validation')->default(false);
             $table->timestamps();

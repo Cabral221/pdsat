@@ -29,7 +29,8 @@ class ImputationFactory extends Factory
             'phone' => $this->faker->phoneNumber,
             'email' => $this->faker->safeEmail(),
             'registration_number' => $this->faker->word,
-            'service' => $this->faker->word
+            'service' => $this->faker->word,
+            'fonction' => 'Informaticien',
         ];
     }
 }

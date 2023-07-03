@@ -34,7 +34,8 @@ class ImputationTest extends TestCase
             'agent' => 'Abdourahmane DIOP',
             'email' => 'cabraldiop18@gmail.com',
             'phone' => 778435052,
-            'registration_number' => 'XXXXXX/Z',
+            'fonction' => 'Informaticien',
+            'registration_number' => '111111/Z',
             'service' => 'Cellule Informatique',
         ])->assertStatus(302)
           ->assertRedirect('/imputations')
@@ -45,7 +46,8 @@ class ImputationTest extends TestCase
             'agent' => 'Abdourahmane DIOP',
             'email' => 'cabraldiop18@gmail.com',
             'phone' => 221778435052,
-            'registration_number' => 'XXXXXX/Z',
+            'fonction' => 'Informaticien',
+            'registration_number' => '111111/Z',
             'service' => 'Cellule Informatique',
         ]);
     }
