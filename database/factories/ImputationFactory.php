@@ -25,7 +25,8 @@ class ImputationFactory extends Factory
     {
         return [
             'sick_name' => $this->faker->name(),
-            'agent' => $this->faker->name(),
+            'first_name' => $this->faker->name(),
+            'last_name' => $this->faker->name(),
             'phone' => $this->faker->phoneNumber,
             'email' => $this->faker->safeEmail(),
             'registration_number' => $this->faker->word,

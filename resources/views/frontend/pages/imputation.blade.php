@@ -17,30 +17,31 @@
                     </x-slot>
 
                     <x-slot name="body">
-                        <form id="form_request_imputation" class="form" action="#" method="POST">
+                        <form id="form_request_imputation" class="form" action="{{ route('frontend.imputation.store') }}" method="POST">
                             @csrf
+                            @method('POST')
 
                             <fieldset class="fielset">
                                 <legend>Informations personnelles de l'agent</legend>
                                 <div class="form-group">
                                     <label for="first_name">Prénom de l'agent</label>
-                                    <input type="text" class="form-control" id="first_name" placeholder="Entrer votre prénom">
+                                    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Entrer votre prénom">
                                 </div>
                                 <div class="form-group">
                                     <label for="last_name">Nom de l'agent</label>
-                                    <input type="text" class="form-control" id="last_name" placeholder="Entrer votre nom">
+                                    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Entrer votre nom">
                                 </div>
                                 <div class="form-group">
                                     <label for="phone">Téléphone</label>
-                                    <input type="phone" class="form-control" id="phone" placeholder="Ex : 771234567">
+                                    <input type="phone" class="form-control" id="phone" name="phone" placeholder="Ex : 771234567">
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Adresse E-mail</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Ex : abc@abc.com">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Ex : abc@abc.com">
                                 </div>
                                 <div class="form-group">
                                     <label for="sick_name">Penom et Nom du malade</label>
-                                    <input type="text" class="form-control" id="sick_name" placeholder="Prénom et NOM de la personne malade">
+                                    <input type="text" class="form-control" id="sick_name" name="sick_name" placeholder="Prénom et NOM de la personne malade">
                                 </div>
                             </fieldset>
                             <hr>
@@ -48,15 +49,15 @@
                                 <legend>Services</legend>
                                 <div class="form-group">
                                     <label for="matricule">Matricule de solde</label>
-                                    <input type="text" class="form-control" id="matricule" placeholder="Ex : 123456/A">
+                                    <input type="text" class="form-control" id="matricule" name="registration_number" placeholder="Ex : 123456/A">
                                 </div>
                                 <div class="form-group">
                                     <label for="service">Service</label>
-                                    <input type="text" class="form-control" id="service" placeholder="Ex : Cellule Informatique">
+                                    <input type="text" class="form-control" id="service" name="service" placeholder="Ex : Cellule Informatique">
                                 </div>
                                 <div class="form-group">
                                     <label for="service">Fonction</label>
-                                    <input type="text" class="form-control" id="fonction" placeholder="Ex : Informaticien">
+                                    <input type="text" class="form-control" id="fonction" name="fonction" placeholder="Ex : Informaticien">
                                 </div>
                             </fieldset>
 

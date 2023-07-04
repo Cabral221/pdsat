@@ -10,7 +10,7 @@ class Imputation extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['sick_name', 'agent', 'email', 'phone', 'registration_number', 'service', 'fonction' ,'status'];
+    protected $fillable = ['sick_name', 'first_name', 'last_name', 'email', 'phone', 'registration_number', 'service', 'fonction' ,'status'];
 
     public const LOAD_EMPLOYE = 0.2;
     public const LOAD_EMPLOYER = 0.8;

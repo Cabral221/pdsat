@@ -16,10 +16,13 @@ class ImputationController extends Controller
 
     public function store(Request $request, ImputationService $imputationService)
     {
+        $request->agent = $request->first_name . ' ' . $request->last_name;
+
         // Valider les donnees
         $request->validate([
             'sick_name' => 'required|string',
-            'agent' => 'required|string',
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
             'email' => 'required|email',
             'phone' => 'required|integer',
             'registration_number' => 'required|string',

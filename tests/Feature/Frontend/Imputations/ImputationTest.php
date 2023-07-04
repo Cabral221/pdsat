@@ -30,8 +30,9 @@ class ImputationTest extends TestCase
     public function test_add_imputation()
     {
         $this->post('/imputations', [
-            'sick_name' => 'Abdourahmane DIOP',
-            'agent' => 'Abdourahmane DIOP',
+            'sick_name' => 'Makhtar DIOP',
+            'first_name' => 'Abdourahmane',
+            'last_name' => 'DIOP',
             'email' => 'cabraldiop18@gmail.com',
             'phone' => 778435052,
             'fonction' => 'Informaticien',
@@ -42,8 +43,9 @@ class ImputationTest extends TestCase
           ->assertSessionHas(['success' => 'Votre Demande a bien été transmise au service Ressources Humaines du MDCSNEST']);
 
         $this->assertDatabaseHas('imputations', [
-            'sick_name' => 'Abdourahmane DIOP',
-            'agent' => 'Abdourahmane DIOP',
+            'sick_name' => 'Makhtar DIOP',
+            'first_name' => 'Abdourahmane',
+            'last_name' => 'DIOP',
             'email' => 'cabraldiop18@gmail.com',
             'phone' => 221778435052,
             'fonction' => 'Informaticien',
