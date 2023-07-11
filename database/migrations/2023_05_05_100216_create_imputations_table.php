@@ -29,8 +29,8 @@ class CreateImputationsTable extends Migration
             $table->string('service');
             $table->string('fonction');
 
-            $table->boolean('status')->default(true);
             $table->boolean('validation')->default(false);
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

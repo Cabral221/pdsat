@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
+use App\Domains\Auth\Models\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use App\Domains\Imputation\Mail\RequestImputation;
 use App\Domains\Imputation\Services\ImputationService;
 
 class ImputationController extends Controller
@@ -32,9 +35,13 @@ class ImputationController extends Controller
         // Enregistrer dans la base de données
         $imputation = $imputationService->create($request->all());
 
+        // Notifier l'admin par mail
+        $email = User::first()->email;
+        Mail::to($email)->send(new RequestImputation());
+
         // Alert success message and return redirect to index of imputation
         return redirect()
                 ->route('frontend.imputation.index')
-                ->with(['success' => 'Votre Demande a bien été transmise au service Ressources Humaines du MDCSNEST']);
+                ->with(['flash_success' => 'Votre Demande a bien été transmise au service Ressources Humaines du MDCSNEST']);
     }
 }

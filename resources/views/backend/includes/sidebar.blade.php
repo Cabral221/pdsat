@@ -18,6 +18,15 @@
                 :text="__('Dashboard')" />
         </li>
 
+        <li class="c-sidebar-nav-item">
+            <x-utils.link
+                class="c-sidebar-nav-link"
+                :href="route('admin.imputations.index')"
+                :active="activeClass(Route::is('admin.imputations.index'), 'c-active')"
+                icon="c-sidebar-nav-icon cil-spreadsheet"
+                :text="__('Imputation Budgetaire')" />
+        </li>
+
         @if (
             $logged_in_user->hasAllAccess() ||
             (
@@ -29,6 +38,8 @@
                 $logged_in_user->can('admin.access.user.change-password')
             )
         )
+
+
             <li class="c-sidebar-nav-title">@lang('System')</li>
 
             <li class="c-sidebar-nav-dropdown {{ activeClass(Route::is('admin.auth.user.*') || Route::is('admin.auth.role.*'), 'c-open c-show') }}">

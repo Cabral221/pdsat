@@ -20,6 +20,11 @@ class ImputationService extends BaseService
         $this->model = $imputation;
     }
 
+    public function all()
+    {
+        return $this->model::orderBy('created_at', 'DESC')->paginate(10);
+    }
+
     public function create(Array $imputation)
     {
         return $this->model::create($imputation);
@@ -35,5 +40,9 @@ class ImputationService extends BaseService
         return $imputation->delete();
     }
 
+    public function active()
+    {
+        return Imputation::active()->orderBy('created_at', 'DESC')->paginate(10);
+    }
 
 }

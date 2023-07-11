@@ -14,6 +14,9 @@ Route::get('dashboard', [DashboardController::class, 'index'])
 
 Route::get('imputations', [ImputationController::class , 'index'])
     ->name('imputations.index');
-
+Route::post('imputations/{imputation}', [ImputationController::class, 'activeRequest'])
+    ->name('imputations.active');
 Route::delete('imputations/{imputation}', [ImputationController::class, 'delete'])
     ->name('imputations.delete');
+Route::get('imputations/{imputation}/print', [ImputationController::class, 'print'])
+    ->name('imputations.print');
