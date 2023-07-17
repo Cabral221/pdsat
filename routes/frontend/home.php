@@ -1,8 +1,9 @@
 <?php
 
+use Tabuna\Breadcrumbs\Trail;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\TermsController;
-use Tabuna\Breadcrumbs\Trail;
+use App\Http\Controllers\Frontend\ImputationController;
 
 /*
  * Frontend Controllers
@@ -20,3 +21,7 @@ Route::get('terms', [TermsController::class, 'index'])
         $trail->parent('frontend.index')
             ->push(__('Terms & Conditions'), route('frontend.pages.terms'));
     });
+
+
+Route::get('imputations', [ImputationController::class, 'index'])->name('imputation.index');
+Route::post('imputations', [ImputationController::class, 'store'])->name('imputation.store');
