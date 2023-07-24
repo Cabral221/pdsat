@@ -18,12 +18,12 @@
                 </a>
                 <a href="#" class="card bg-success m-3" style="max-width: 18rem; min-width: 14rem">
                     <div class="card-body">
-                        <h5 class="card-title">Ordre de missions</h5>
+                        <h5 class="card-title">Demande de Congés</h5>
                     </div>
                 </a>
                 <a href="#" class="card bg-danger m-3" style="max-width: 18rem; min-width: 14rem">
                     <div class="card-body">
-                        <h5 class="card-title">Imputation Budgétaire</h5>
+                        <h5 class="card-title">Ordre de Missions</h5>
                     </div>
                 </a>
                 <a href="#" class="card bg-warning m-3" style="max-width: 18rem; min-width: 14rem">

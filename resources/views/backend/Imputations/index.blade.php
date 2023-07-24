@@ -33,7 +33,7 @@
                             <td>{{ $imputation->service }}</td>
                             <td>
                                 @if ($imputation->validation)
-                                    <button type="button" class="btn btn-warning"><span class="cil-print btn-icon mr-2"></span> Imprimer</button>
+                                    <a href="{{ route('admin.imputations.print', $imputation) }}" class="btn btn-warning"><span class="cil-print btn-icon mr-2"></span> Imprimer</a>
                                 @else
                                     <form action="{{ route('admin.imputations.active', $imputation) }}" method="post" style="display: inline">
                                         @csrf

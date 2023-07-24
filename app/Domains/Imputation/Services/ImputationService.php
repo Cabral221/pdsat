@@ -3,6 +3,7 @@
 namespace App\Domains\Imputation\Services;
 
 use App\Services\BaseService;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Domains\Imputation\Models\Imputation;
 
 /**
@@ -43,6 +44,11 @@ class ImputationService extends BaseService
     public function active()
     {
         return Imputation::active()->orderBy('created_at', 'DESC')->paginate(10);
+    }
+
+    public function getPrint(Imputation $imputation)
+    {
+       return  Pdf::loadView('backend.imputations.print',compact('imputation'));
     }
 
 }
