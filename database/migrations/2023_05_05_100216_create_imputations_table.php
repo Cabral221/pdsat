@@ -20,10 +20,12 @@ class CreateImputationsTable extends Migration
             $table->float('load_employer')->default(0.8);
 
             $table->string('sick_name');
+
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email');
             $table->bigInteger('phone');
+            $table->bigInteger('cni');
 
             $table->string('registration_number');
             $table->string('service');

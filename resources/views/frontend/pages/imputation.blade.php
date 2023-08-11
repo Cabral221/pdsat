@@ -20,28 +20,52 @@
                         <form id="form_request_imputation" class="form" action="{{ route('frontend.imputation.store') }}" method="POST">
                             @csrf
                             @method('POST')
-
-                            <fieldset class="fielset">
+                            <fieldset class="fieldset">
+                                <legend>Information de la personne Malade</legend>
+                                <div class="form-group">
+                                    <label for="sick_name">Penom et Nom de la personne malade</label>
+                                    <input type="text" class="form-control @error('sick_name') is-invalid @enderror" id="sick_name" name="sick_name" placeholder="Prénom et NOM de la personne malade">
+                                    @error('sick_name')
+                                    <span class="invalide-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </fieldset>
+                            <fieldset class="fieldset">
                                 <legend>Informations personnelles de l'agent</legend>
                                 <div class="form-group">
                                     <label for="first_name">Prénom de l'agent</label>
-                                    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Entrer votre prénom">
+                                    <input type="text" class="form-control @error('first_name') is-invalid @enderror" id="first_name" name="first_name" placeholder="Entrer votre prénom" required>
+                                    @error('first_name')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="last_name">Nom de l'agent</label>
-                                    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Entrer votre nom">
+                                    <input type="text" class="form-control @error('last_name') is-invalid @enderror" id="last_name" name="last_name" placeholder="Entrer votre nom" required>
+                                    @error('last_name')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="phone">Téléphone</label>
-                                    <input type="phone" class="form-control" id="phone" name="phone" placeholder="Ex : 771234567">
+                                    <input type="phone" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" placeholder="Ex : 771234567" required>
+                                    @error('phone')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Adresse E-mail</label>
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Ex : abc@abc.com">
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Ex : abc@abc.com">
+                                    @error('email')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="sick_name">Penom et Nom du malade</label>
-                                    <input type="text" class="form-control" id="sick_name" name="sick_name" placeholder="Prénom et NOM de la personne malade">
+                                    <label for="cni">Numéro CNI</label>
+                                    <input type="number" class="form-control @error('cni') is-invalid @enderror" id="cni" name="cni" placeholder="Ex : 1 234 5678 90123">
+                                    @error('cni')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </fieldset>
                             <hr>
@@ -49,15 +73,24 @@
                                 <legend>Services</legend>
                                 <div class="form-group">
                                     <label for="matricule">Matricule de solde</label>
-                                    <input type="text" class="form-control" id="matricule" name="registration_number" placeholder="Ex : 123456/A">
+                                    <input type="text" class="form-control @error('registration_number') is-invalid @enderror" id="matricule" name="registration_number" placeholder="Ex : 123456/A">
+                                    @error('registration_number')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="service">Service</label>
-                                    <input type="text" class="form-control" id="service" name="service" placeholder="Ex : Cellule Informatique">
+                                    <input type="text" class="form-control @error('service') is-invalid @enderror" id="service" name="service" placeholder="Ex : Cellule Informatique">
+                                    @error('service')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="service">Fonction</label>
-                                    <input type="text" class="form-control" id="fonction" name="fonction" placeholder="Ex : Informaticien">
+                                    <input type="text" class="form-control @error('fonction') is-invalid @enderror" id="fonction" name="fonction" placeholder="Ex : Informaticien">
+                                    @error('fonction')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </fieldset>
 

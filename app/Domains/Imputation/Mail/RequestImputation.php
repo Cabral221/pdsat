@@ -11,14 +11,18 @@ class RequestImputation extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $demandeur;
+    public $link;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(string $demandeur)
     {
-        //
+        $this->demandeur = $demandeur;
+        $this->link = route('admin.imputations.index');
     }
 
     /**
@@ -28,6 +32,8 @@ class RequestImputation extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.request-imputation');
+        return $this->from('cabraldiop18@gmail.com', 'MDCSNEST')
+        ->subject('DEMANDE D\'IMPUTATION BUDGETAIRE')
+        ->markdown('emails.request-imputation');
     }
 }
