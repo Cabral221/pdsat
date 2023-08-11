@@ -1,12 +1,15 @@
 @component('mail::message')
-# Introduction
+# DEMANDE D'IMPUTATION BUDGETAIRE
 
-The body of your message.
+Bonjour, <br>
+Mr(Mme) {{ $demandeur }} a effectué une demande d'imputation Budgétaire.
+<br>
+Merci d'etudier la demande en en cliquant sur le bounton ci-dessous.
 
-@component('mail::button', ['url' => ''])
-Button Text
+@component('mail::button', ['url' => $link ])
+Voir la demande
 @endcomponent
 
-Thanks,<br>
+Merci,<br>
 {{ config('app.name') }}
 @endcomponent

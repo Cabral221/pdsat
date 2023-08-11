@@ -41,7 +41,7 @@ class ImputationTest extends TestCase
 
         $this->delete('/admin/imputations/' . $imputation->id)
         ->assertRedirect('/admin/imputations')
-        ->assertSessionHas('success');
+        ->assertSessionHas('flash_success');
         $this->assertDatabaseCount('imputations', 0);
     }
 

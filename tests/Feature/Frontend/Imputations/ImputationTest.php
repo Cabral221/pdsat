@@ -35,12 +35,13 @@ class ImputationTest extends TestCase
             'last_name' => 'DIOP',
             'email' => 'cabraldiop18@gmail.com',
             'phone' => 778435052,
+            'cni' => 1251199700767,
             'fonction' => 'Informaticien',
             'registration_number' => '111111/Z',
             'service' => 'Cellule Informatique',
         ])->assertStatus(302)
           ->assertRedirect('/imputations')
-          ->assertSessionHas(['success' => 'Votre Demande a bien été transmise au service Ressources Humaines du MDCSNEST']);
+          ->assertSessionHas(['flash_success' => 'Votre Demande a bien été transmise au service Ressources Humaines du MDCSNEST']);
 
         $this->assertDatabaseHas('imputations', [
             'sick_name' => 'Makhtar DIOP',
@@ -48,6 +49,7 @@ class ImputationTest extends TestCase
             'last_name' => 'DIOP',
             'email' => 'cabraldiop18@gmail.com',
             'phone' => 221778435052,
+            'cni' => 1251199700767,
             'fonction' => 'Informaticien',
             'registration_number' => '111111/Z',
             'service' => 'Cellule Informatique',
