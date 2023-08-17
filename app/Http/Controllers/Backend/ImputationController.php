@@ -37,8 +37,9 @@ class ImputationController extends Controller
 
     public function print(Imputation $imputation, ImputationService $imputationService)
     {
-        $nomFichier = "IMPUTATION-Budgetaire-" . $imputation->first_name . ".pdf";
+        $nomFichier = "Imputation-Budgetaire-" . $imputation->registration_number . ".pdf";
         $pdf = $imputationService->getPrint($imputation);
-        return $pdf->download($nomFichier);
+
+        return $pdf->stream();
     }
 }

@@ -34,6 +34,7 @@
                             <td>
                                 @if ($imputation->validation)
                                     <a href="{{ route('admin.imputations.print', $imputation) }}" class="btn btn-warning"><span class="cil-print btn-icon mr-2"></span> Imprimer</a>
+                                    <a href="#" class="btn btn-secondary"><span class="cil-print btn-icon mr-2"></span> Charger</a>
                                 @else
                                     <form action="{{ route('admin.imputations.active', $imputation) }}" method="post" style="display: inline">
                                         @csrf
