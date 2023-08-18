@@ -7,22 +7,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class RequestImputation extends Mailable
+class Acknowledgment extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $demandeur;
-    public $link;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(string $demandeur)
+    public function __construct()
     {
-        $this->demandeur = $demandeur;
-        $this->link = route('admin.imputations.index');
+        //
     }
 
     /**
@@ -33,6 +29,6 @@ class RequestImputation extends Mailable
     public function build()
     {
         return $this->subject('DEMANDE D\'IMPUTATION BUDGETAIRE')
-        ->markdown('emails.request-imputation');
+        ->markdown('emails.acknowledgment');
     }
 }

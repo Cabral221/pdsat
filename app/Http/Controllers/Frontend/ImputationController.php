@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Domains\Auth\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use App\Domains\Imputation\Mail\Acknowledgment;
 use App\Domains\Imputation\Mail\RequestImputation;
 use App\Domains\Imputation\Services\ImputationService;
 
@@ -31,13 +32,15 @@ class ImputationController extends Controller
             'cni' => 'required|integer',
             'registration_number' => 'required|string',
             'service' => 'required|string',
+            'fonction' => 'required|string',
         ]);
 
         // Enregistrer dans la base de données
         $imputation = $imputationService->create($request->all());
 
         // Notifier l'admin par mail
-        Mail::to(User::first()->email)->send(new RequestImputation($request->last_name));
+        Mail::to(User::first()->email)->send(new RequestImputation($imputation->last_name));
+        Mail::to($imputation->email)->send(new Acknowledgment());
         // Notifier l'user par mail
         // ...
 
