@@ -10,7 +10,7 @@
 
         <x-slot name="body">
             <h3>@lang('Demandes d\'imputations récentes')</h3>
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <td>N° Demande</td>
@@ -32,32 +32,13 @@
                             <td>{{ $imputation->fonction }}</td>
                             <td>{{ $imputation->service }}</td>
                             <td>
-                                @if ($imputation->validation)
-                                    <a href="{{ route('admin.imputations.print', $imputation) }}" class="btn btn-warning"><span class="cil-print btn-icon mr-2"></span> Imprimer</a>
-                                    <a href="#" class="btn btn-secondary"><span class="cil-print btn-icon mr-2"></span> Charger</a>
-                                @else
-                                    <form action="{{ route('admin.imputations.active', $imputation) }}" method="post" style="display: inline">
-                                        @csrf
-                                        @method('POST')
-                                        <button type="submit" class="btn btn-primary"><span class="cil-check-circle btn-icon mr-2"></span> Valider</button>
-                                    </form>
-                                @endif
-
-                                <form action="{{ route('admin.imputations.delete', $imputation) }}" method="post" id="form_delete_imp_{{ $imputation->id }}"  style="display: inline">
-                                    @csrf
-                                    @method('DELETE')
-                                </form>
-                                <button type="button" class="btn btn-danger"
-                                    onclick="if(confirm('Etes vous sur de vouloir supprimer cette demande')){document.getElementById('form_delete_imp_{{ $imputation->id }}').submit();}">
-                                    <span class="cil-trash btn-icon mr-2"></span> Supprimer</button>
+                                <a href="{{ route('admin.imputations.show', $imputation) }}" class="btn btn-primary"> <span class="cil-eye btn-icon mr-2"></span> Voir</a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-
             {{ $imputations->links() }}
-
         </x-slot>
     </x-backend.card>
 @endsection

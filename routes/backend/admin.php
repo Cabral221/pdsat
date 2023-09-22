@@ -12,11 +12,9 @@ Route::get('dashboard', [DashboardController::class, 'index'])
         $trail->push(__('Home'), route('admin.dashboard'));
     });
 
-Route::get('imputations', [ImputationController::class , 'index'])
-    ->name('imputations.index');
-Route::post('imputations/{imputation}', [ImputationController::class, 'activeRequest'])
-    ->name('imputations.active');
-Route::delete('imputations/{imputation}', [ImputationController::class, 'delete'])
-    ->name('imputations.delete');
-Route::get('imputations/{imputation}/print', [ImputationController::class, 'print'])
-    ->name('imputations.print');
+Route::get('imputations', [ImputationController::class , 'index'])->name('imputations.index');
+Route::delete('imputations/{imputation}', [ImputationController::class, 'delete'])->name('imputations.delete');
+Route::get('imputations/{imputation}', [ImputationController::class, 'show'])->name('imputations.show');
+
+Route::post('imputations/{imputation}', [ImputationController::class, 'activeRequest'])->name('imputations.active');
+Route::get('imputations/{imputation}/print', [ImputationController::class, 'print'])->name('imputations.print');

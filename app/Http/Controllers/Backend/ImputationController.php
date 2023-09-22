@@ -16,6 +16,11 @@ class ImputationController extends Controller
         return view('backend.imputations.index', compact('imputations'));
     }
 
+    public function show(Imputation $imputation)
+    {
+        return view('backend.imputations.show', compact('imputation'));
+    }
+
     public function activeRequest(Imputation $imputation)
     {
         $imputation->update(['validation' => ! $imputation->validation]);
