@@ -31,6 +31,8 @@ class CreateImputationsTable extends Migration
             $table->string('service');
             $table->string('fonction');
 
+            $table->string('file')->nullable();
+
             $table->boolean('validation')->default(false);
             $table->boolean('status')->default(false);
             $table->timestamps();

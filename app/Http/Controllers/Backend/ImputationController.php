@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use App\Domains\Imputation\Models\Imputation;
+use App\Domains\Imputation\Mail\FinalImputationMail;
 use App\Domains\Imputation\Services\ImputationService;
 
 class ImputationController extends Controller
 {
     public function index(ImputationService $imputationService)
     {
-        // get all request in waiting
         $imputations = $imputationService->all();
 
         return view('backend.imputations.index', compact('imputations'));
@@ -21,10 +23,34 @@ class ImputationController extends Controller
         return view('backend.imputations.show', compact('imputation'));
     }
 
+    public function load(Request $request, Imputation $imputation)
+    {
+        // Validation
+        $this->validate($request, [
+            'file' => 'file',
+            'file' => 'required|file|mimes:pdf',
+        ]);
+
+        // save file Directory
+        $hashName = $request->file('file')->hashName();
+        $request->file('file')->store('public/imputations');
+
+        // save file Database
+        $imputation->update(['file' => 'storage/imputations/'.$hashName]);
+
+        // Envoyer Par mail
+        Mail::to($imputation->email)->send(new FinalImputationMail($imputation, $hashName));
+        $imputation->update(['status' => true]);
+
+        // redirect  to imputation show with success message
+        return redirect()
+                    ->route('admin.imputations.show', $imputation)
+                    ->with(['flash_success' => 'Le document a bien été chargé et transmis au demandeur']);
+    }
+
     public function activeRequest(Imputation $imputation)
     {
         $imputation->update(['validation' => ! $imputation->validation]);
-        // dd('activer une demande', $imputation);
         session()->flash('flash_success', 'La demande d\'imputation budgétaire a été validé et est en approbation de signature.');
 
         return redirect()->back();
