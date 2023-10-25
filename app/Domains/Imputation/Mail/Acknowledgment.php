@@ -28,7 +28,7 @@ class Acknowledgment extends Mailable
      */
     public function build()
     {
-        return $this->subject('DEMANDE D\'IMPUTATION BUDGETAIRE')
-        ->markdown('emails.acknowledgment');
+        return $this->subject('VOTRE IMPUTATION EST EN COURS DE TRAITEMENT !')
+            ->markdown('emails.acknowledgment');
     }
 }
