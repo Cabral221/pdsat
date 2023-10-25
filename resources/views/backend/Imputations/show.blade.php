@@ -10,6 +10,19 @@
 
         <x-slot name="body">
             <h3>@lang('Demande d\'imputation')</h3>
+            <div class="d-flex mb-2">
+                <span class="">Etat de la demande :
+                    @if ($imputation->validation == false)
+                        <span class="badge badge-secondary">En attente de validation</span>
+                    @else
+                        @if ($imputation->status == false)
+                            <span class="badge badge-warning">En attente de signature</span>
+                        @else
+                            <span class="badge badge-success">Disponible</span>
+                        @endif
+                    @endif
+                </span>
+            </div>
             <hr>
             <div class="row">
                 <div class="col-sm-6">
