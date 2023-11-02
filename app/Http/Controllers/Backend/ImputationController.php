@@ -73,4 +73,9 @@ class ImputationController extends Controller
 
         return $pdf->stream();
     }
+
+    public function download(Imputation $imputation)
+    {
+        return response()->download($imputation->file);
+    }
 }

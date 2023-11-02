@@ -19,3 +19,4 @@ Route::post('imputations/{imputation}/load', [ImputationController::class, 'load
 
 Route::post('imputations/{imputation}', [ImputationController::class, 'activeRequest'])->name('imputations.active');
 Route::get('imputations/{imputation}/print', [ImputationController::class, 'print'])->name('imputations.print');
+Route::get('imputations/{imputation}/download', [ImputationController::class, 'download'])->name('imputations.download');

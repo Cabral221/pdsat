@@ -73,10 +73,20 @@
 
             <div class="pt-4 text-center">
                 @if ($imputation->validation)
-                    <a href="{{ route('admin.imputations.print', $imputation) }}" class="btn btn-warning"><span class="cil-print btn-icon mr-2"></span> Imprimer</a>
-                    {{-- <a href="#" class="btn btn-secondary"><span class="cil-print btn-icon mr-2"></span> Charger</a> --}}
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#finalImputationModal" data-whatever="@fat">Envoyez l'imputation</button>
-                    {{-- Option desactiver demande --}}
+
+                    @if ($imputation->status)
+                        <a href="{{ route('admin.imputations.download', $imputation) }}" class="btn btn-warning">Télécharger</a>
+
+                        <button class="btn btn-primary">Renvoyer par mail</button>
+
+                    @else
+                        <a href="{{ route('admin.imputations.print', $imputation) }}" class="btn btn-warning"><span class="cil-print btn-icon mr-2"></span> Imprimer</a>
+
+                        {{-- <a href="#" class="btn btn-secondary"><span class="cil-print btn-icon mr-2"></span> Charger</a> --}}
+                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#finalImputationModal" data-whatever="@fat">Envoyez l'imputation</button>
+                        {{-- Option desactiver demande --}}
+                    @endif
+
                 @else
                     <form action="{{ route('admin.imputations.active', $imputation) }}" method="post" style="display: inline">
                         @csrf
