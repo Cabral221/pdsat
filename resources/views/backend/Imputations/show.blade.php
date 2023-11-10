@@ -75,13 +75,12 @@
                 @if ($imputation->validation)
 
                     @if ($imputation->status)
+                        {{-- Telechargement de l'imputation  --}}
                         <a href="{{ route('admin.imputations.download', $imputation) }}" class="btn btn-warning">Télécharger</a>
-
-                        <button class="btn btn-primary">Renvoyer par mail</button>
-
+                        {{-- Renvoi de l'imputation par mail --}}
+                        <a href="{{ route('admin.imputations.resend', $imputation) }}" class="btn btn-primary">Renvoyer par mail</a>
                     @else
                         <a href="{{ route('admin.imputations.print', $imputation) }}" class="btn btn-warning"><span class="cil-print btn-icon mr-2"></span> Imprimer</a>
-
                         {{-- <a href="#" class="btn btn-secondary"><span class="cil-print btn-icon mr-2"></span> Charger</a> --}}
                         <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#finalImputationModal" data-whatever="@fat">Envoyez l'imputation</button>
                         {{-- Option desactiver demande --}}

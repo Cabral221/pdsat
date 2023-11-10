@@ -78,4 +78,14 @@ class ImputationController extends Controller
     {
         return response()->download($imputation->file);
     }
+
+    public function resend(Imputation $imputation)
+    {
+        // Envoyer Par mail
+        Mail::to($imputation->email)->send(new FinalImputationMail($imputation));
+
+        return redirect()
+                    ->route('admin.imputations.show', $imputation)
+                    ->with(['flash_success' => 'Le document a bien été transmis par mail au demandeur']);
+    }
 }

@@ -23,11 +23,16 @@ class FinalImputationMail extends Mailable
      *
      * @return void
      */
-    public function __construct(Imputation $imputation, $hashName)
+    public function __construct(Imputation $imputation, $hashName = null)
     {
-        $this->hashName = $hashName;
         $this->demandeur = $imputation->last_name;
-        $this->path = storage_path("app\public\imputations\\") . $this->hashName;
+
+        if($hashName !== null){
+            $this->path = storage_path("app\public\imputations\\") . $this->hashName;
+        }else{
+            $fileName = basename(asset($imputation->file));
+            $this->path = storage_path("app\public\imputations\\") . $fileName;
+        }
     }
 
     /**

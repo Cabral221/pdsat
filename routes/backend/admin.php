@@ -16,6 +16,7 @@ Route::get('imputations', [ImputationController::class , 'index'])->name('imputa
 Route::delete('imputations/{imputation}', [ImputationController::class, 'delete'])->name('imputations.delete');
 Route::get('imputations/{imputation}', [ImputationController::class, 'show'])->name('imputations.show');
 Route::post('imputations/{imputation}/load', [ImputationController::class, 'load'])->name('imputations.load');
+Route::get('imputations/{imputation}/resend', [ImputationController::class, 'resend'])->name('imputations.resend');
 
 Route::post('imputations/{imputation}', [ImputationController::class, 'activeRequest'])->name('imputations.active');
 Route::get('imputations/{imputation}/print', [ImputationController::class, 'print'])->name('imputations.print');
