@@ -13,9 +13,16 @@ class ImputationController extends Controller
 {
     public function index(ImputationService $imputationService)
     {
-        $imputations = $imputationService->all();
+        $imputations = $imputationService->all()->paginate(10);
 
-        return view('backend.imputations.index', compact('imputations'));
+        $stats =  [
+            'total' => $imputationService->all()->count(),
+            'inactive' => $imputationService->where('validation', false)->where('status', false)->get()->count(),
+            'signature' => $imputationService->where('validation', true)->where('status', false)->get()->count(),
+            'final' => $imputationService->where('validation', true)->where('status', true)->get()->count(),
+        ];
+
+        return view('backend.imputations.index', compact('imputations', 'stats'));
     }
 
     public function show(Imputation $imputation)

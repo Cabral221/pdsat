@@ -3,6 +3,50 @@
 @section('title', __('Dashboard'))
 
 @section('content')
+
+    <x-backend.card>
+        <x-slot name="header">Service d'Imputation Budgétaire</x-slot>
+        <x-slot name="body">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="card bg-primary text-white">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div><h2>Demandes</h2></div>
+                                <div><h1 class="text-right">{{ $stats['total'] }}</h1></div>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between">
+                                <span>Demandes en attentes de validation : </span>
+                                <span><h2>{{ $stats['inactive'] }}</h2></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card bg-warning text-white">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div><h2>Demandes en Signatures</h2></div>
+                                <div><h1 class="text-right">{{ $stats['signature'] }}</h1></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card bg-success text-white">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div><h2>Demandes cloturés</h2></div>
+                                <div><h1 class="text-right">{{ $stats['final'] }}</h1></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </x-slot>
+    </x-backend.card>
+
     <x-backend.card>
         <x-slot name="header">
             @lang('Welcome :Name', ['name' => $logged_in_user->name])

@@ -25,7 +25,7 @@ class ImputationService extends BaseService
     {
         return $this->model::orderBy('validation', 'ASC')
                             ->orderBy('status', 'ASC')
-                            ->orderBy('created_at', 'DESC')->paginate(10);
+                            ->orderBy('created_at', 'DESC');
     }
 
     public function create(Array $imputation)
