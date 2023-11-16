@@ -37,7 +37,7 @@
                     <div class="card bg-success text-white">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
-                                <div><h2>Demandes cloturés</h2></div>
+                                <div><h2>Demandes finalisées</h2></div>
                                 <div><h1 class="text-right">{{ $stats['final'] }}</h1></div>
                             </div>
                         </div>
