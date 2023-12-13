@@ -60,13 +60,6 @@
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <label for="cni">Numéro CNI</label>
-                                    <input type="number" class="form-control @error('cni') is-invalid @enderror" id="cni" name="cni" placeholder="Ex : 1 234 5678 90123">
-                                    @error('cni')
-                                        <span class="invalid-feedback">{{ $message }}</span>
-                                    @enderror
-                                </div>
                             </fieldset>
                             <hr>
                             <fieldset>

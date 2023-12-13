@@ -25,7 +25,6 @@ class CreateImputationsTable extends Migration
             $table->string('last_name');
             $table->string('email');
             $table->bigInteger('phone');
-            $table->bigInteger('cni');
 
             $table->string('registration_number');
             $table->string('service');

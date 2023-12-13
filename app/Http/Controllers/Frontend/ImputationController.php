@@ -29,7 +29,6 @@ class ImputationController extends Controller
             'last_name' => 'required|string',
             'email' => 'required|email',
             'phone' => 'required|integer',
-            'cni' => 'required|integer',
             'registration_number' => 'required|string',
             'service' => 'required|string',
             'fonction' => 'required|string',
@@ -40,9 +39,8 @@ class ImputationController extends Controller
 
         // Notifier l'admin par mail
         Mail::to(User::first()->email)->send(new RequestImputation($imputation->last_name));
-        Mail::to($imputation->email)->send(new Acknowledgment());
         // Notifier l'user par mail
-        // ...
+        Mail::to($imputation->email)->send(new Acknowledgment());
 
         // Alert success message and return redirect to index of imputation
         return redirect()
