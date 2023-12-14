@@ -1,17 +1,17 @@
 <?php
 
-use App\Domains\Auth\Http\Controllers\Frontend\Auth\ConfirmPasswordController;
-use App\Domains\Auth\Http\Controllers\Frontend\Auth\DisableTwoFactorAuthenticationController;
-use App\Domains\Auth\Http\Controllers\Frontend\Auth\ForgotPasswordController;
-use App\Domains\Auth\Http\Controllers\Frontend\Auth\LoginController;
-use App\Domains\Auth\Http\Controllers\Frontend\Auth\PasswordExpiredController;
-use App\Domains\Auth\Http\Controllers\Frontend\Auth\RegisterController;
-use App\Domains\Auth\Http\Controllers\Frontend\Auth\ResetPasswordController;
-use App\Domains\Auth\Http\Controllers\Frontend\Auth\SocialController;
-use App\Domains\Auth\Http\Controllers\Frontend\Auth\TwoFactorAuthenticationController;
-use App\Domains\Auth\Http\Controllers\Frontend\Auth\UpdatePasswordController;
-use App\Domains\Auth\Http\Controllers\Frontend\Auth\VerificationController;
 use Tabuna\Breadcrumbs\Trail;
+use App\Domains\Auth\Http\Controllers\Frontend\Auth\LoginController;
+use App\Domains\Auth\Http\Controllers\Frontend\Auth\SocialController;
+use App\Domains\Auth\Http\Controllers\Frontend\Auth\RegisterController;
+use App\Domains\Auth\Http\Controllers\Frontend\Auth\VerificationController;
+use App\Domains\Auth\Http\Controllers\Frontend\Auth\ResetPasswordController;
+use App\Domains\Auth\Http\Controllers\Frontend\Auth\ForgotPasswordController;
+use App\Domains\Auth\Http\Controllers\Frontend\Auth\UpdatePasswordController;
+use App\Domains\Auth\Http\Controllers\Frontend\Auth\ConfirmPasswordController;
+use App\Domains\Auth\Http\Controllers\Frontend\Auth\PasswordExpiredController;
+use App\Domains\Auth\Http\Controllers\Frontend\Auth\TwoFactorAuthenticationController;
+use App\Domains\Auth\Http\Controllers\Frontend\Auth\DisableTwoFactorAuthenticationController;
 
 /*
  * Frontend Access Controllers
@@ -88,6 +88,9 @@ Route::group(['as' => 'auth.'], function () {
         // Registration
         Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
         Route::post('register', [RegisterController::class, 'register']);
+        // Activation compte
+        Route::get('account/active', [RegisterController::class, 'activationForm'])->name('activate');
+        Route::post('account/active', [RegisterController::class, 'activate']);
 
         // Password Reset
         Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');

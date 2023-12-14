@@ -1,8 +1,10 @@
 <?php
 
 use Tabuna\Breadcrumbs\Trail;
+use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\ImputationController;
+use App\Domains\Auth\Http\Controllers\Backend\AccountController;
 
 // All route names are prefixed with 'admin.'.
 Route::redirect('/', '/admin/dashboard', 301);
@@ -21,3 +23,6 @@ Route::get('imputations/{imputation}/resend', [ImputationController::class, 'res
 Route::post('imputations/{imputation}', [ImputationController::class, 'activeRequest'])->name('imputations.active');
 Route::get('imputations/{imputation}/print', [ImputationController::class, 'print'])->name('imputations.print');
 Route::get('imputations/{imputation}/download', [ImputationController::class, 'download'])->name('imputations.download');
+
+Route::get('accounts', [AccountController::class, 'index'])->name('account.index');
+Route::get('accounts/{account}', [AccountController::class, 'show'])->name('account.show');

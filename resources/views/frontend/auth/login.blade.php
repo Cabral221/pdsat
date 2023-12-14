@@ -57,6 +57,12 @@
                                     <x-utils.link :href="route('frontend.auth.password.request')" class="btn btn-link" :text="__('Forgot Your Password?')" />
                                 </div>
                             </div><!--form-group-->
+                            <hr>
+                            <div class="form-group row mb-0">
+                                <div class="col-md-8 offset-md-4">
+                                    <a href="{{ route('frontend.auth.activate') }}" class="btn btn-success">Activer mon compte</a>
+                                </div>
+                            </div>
 
                             <div class="text-center">
                                 @include('frontend.auth.includes.social')

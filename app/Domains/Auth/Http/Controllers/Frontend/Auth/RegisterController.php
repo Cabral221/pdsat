@@ -2,12 +2,16 @@
 
 namespace App\Domains\Auth\Http\Controllers\Frontend\Auth;
 
-use App\Domains\Auth\Services\UserService;
 use App\Rules\Captcha;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Validator;
+use App\Models\Account;
+use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use App\Domains\Auth\Services\UserService;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use LangleyFoxall\LaravelNISTPasswordRules\PasswordRules;
+use App\Domains\Auth\Notifications\Backend\ActivateAccount;
 
 /**
  * Class RegisterController.
@@ -97,5 +101,36 @@ class RegisterController
         abort_unless(config('boilerplate.access.user.registration'), 404);
 
         return $this->userService->registerUser($data);
+    }
+
+    /**
+     * Get page for activate account
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function activationForm()
+    {
+        return view('frontend.user.account.activate');
+    }
+
+    public function activate(Request $request)
+    {
+        $request->validate([
+            'registration_number' => 'required|string|unique:accounts',
+            'email' => 'required|email|unique:accounts,email',
+            'phone' => 'required|numeric|unique:accounts,phone',
+            'cni' => 'required|file|mimes:pdf',
+        ]);
+
+
+        // Enregistrer la demande dans la base de données
+        $account = $this->userService->activate($request->all());
+
+        // Send notification/mail à l'admin GRH
+        $account->notify(new ActivateAccount($account->id));
+
+        return redirect()->route('frontend.index')
+                ->with(['flash_success' => "Votre demande d'activation de compte utilisateur a bien été transmis aux Services Ressources Humaines, Aprés validation vous recevrez vos identifiants de connexion par défaut !"]);
+
     }
 }

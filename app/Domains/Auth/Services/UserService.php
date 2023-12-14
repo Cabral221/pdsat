@@ -2,18 +2,19 @@
 
 namespace App\Domains\Auth\Services;
 
+use Exception;
+use App\Domains\Auth\Models\Account;
+use App\Services\BaseService;
+use App\Domains\Auth\Models\User;
+use Illuminate\Support\Facades\DB;
+use App\Exceptions\GeneralException;
+use Illuminate\Support\Facades\Hash;
 use App\Domains\Auth\Events\User\UserCreated;
 use App\Domains\Auth\Events\User\UserDeleted;
-use App\Domains\Auth\Events\User\UserDestroyed;
-use App\Domains\Auth\Events\User\UserRestored;
-use App\Domains\Auth\Events\User\UserStatusChanged;
 use App\Domains\Auth\Events\User\UserUpdated;
-use App\Domains\Auth\Models\User;
-use App\Exceptions\GeneralException;
-use App\Services\BaseService;
-use Exception;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
+use App\Domains\Auth\Events\User\UserRestored;
+use App\Domains\Auth\Events\User\UserDestroyed;
+use App\Domains\Auth\Events\User\UserStatusChanged;
 
 /**
  * Class UserService.
@@ -25,9 +26,10 @@ class UserService extends BaseService
      *
      * @param  User  $user
      */
-    public function __construct(User $user)
+    public function __construct(User $user, Account $account)
     {
         $this->model = $user;
+        $this->account = $account;
     }
 
     /**
@@ -328,6 +330,19 @@ class UserService extends BaseService
             'provider_id' => $data['provider_id'] ?? null,
             'email_verified_at' => $data['email_verified_at'] ?? null,
             'active' => $data['active'] ?? true,
+        ]);
+    }
+
+    public function activate(array $data) : Account
+    {
+        $hashName = $data['cni']->hashName();
+        $data['cni']->store('public/users/cni');
+
+        return $this->account::create([
+            'registration_number' => $data['registration_number'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'cni' => 'storage/users/cni/' . $hashName ,
         ]);
     }
 }
