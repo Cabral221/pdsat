@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use Database\Seeders\Traits\TruncateTable;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Service;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
+use Database\Seeders\Traits\TruncateTable;
 
 /**
  * Class DatabaseSeeder.
@@ -28,6 +29,10 @@ class DatabaseSeeder extends Seeder
         $this->call(AuthSeeder::class);
         $this->call(AnnouncementSeeder::class);
 
+        Service::create(['libele' => 'Cabinet', 'cigle' => 'CAB']);
+        Service::create(['libele' => 'Secrétariat Général', 'cigle' => 'SG']);
+        Service::create(['libele' => 'Direction générale du développement communautaire et la promotion de l equité' , 'cigle' => 'DGDCPE']);
+        Service::create(['libele' => 'Direction de l\'administration générale et de l\'équipement', 'cigle' => 'DAGE']);
         Model::reguard();
     }
 }

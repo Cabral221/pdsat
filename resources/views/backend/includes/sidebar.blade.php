@@ -27,6 +27,15 @@
                 :text="__('Imputation Budgetaire')" />
         </li>
 
+        <li class="c-sidebar-nav-item">
+            <x-utils.link
+                class="c-sidebar-nav-link"
+                :href="route('admin.services.index')"
+                :active="activeClass(Route::is('admin.services.index'), 'c-active')"
+                icon="c-sidebar-nav-icon cil-spreadsheet"
+                :text="__('Services/Structures')" />
+        </li>
+
         @if (
             $logged_in_user->hasAllAccess() ||
             (
