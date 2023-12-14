@@ -23,7 +23,10 @@ class UserSeeder extends Seeder
         // Add the master administrator, user id of 1
         User::create([
             'type' => User::TYPE_ADMIN,
+            'registration_number' => '000000/A',
+            'first_name' => 'First',
             'name' => 'Super Admin',
+            'phone' => '770000000',
             'email' => 'admin@admin.com',
             'password' => 'secret',
             'email_verified_at' => now(),
@@ -33,7 +36,10 @@ class UserSeeder extends Seeder
         if (app()->environment(['local', 'testing'])) {
             User::create([
                 'type' => User::TYPE_USER,
+                'registration_number' => '000000/Z',
+                'first_name' => 'First',
                 'name' => 'Test User',
+                'phone' => '771000000',
                 'email' => 'user@user.com',
                 'password' => 'secret',
                 'email_verified_at' => now(),

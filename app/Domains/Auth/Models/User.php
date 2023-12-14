@@ -49,11 +49,15 @@ class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenti
      */
     protected $fillable = [
         'type',
+        'first_name',
         'name',
+        'registration_number',
+        'phone',
         'email',
         'email_verified_at',
         'password',
         'password_changed_at',
+        'cni',
         'active',
         'timezone',
         'last_login_at',

@@ -29,10 +29,38 @@
                     </div><!--form-group-->
 
                     <div class="form-group row">
+                        <label for="registration_number" class="col-md-2 col-form-label">@lang('Registration number')</label>
+
+                        <div class="col-md-10">
+                            <input type="text" name="registration_number" class="form-control" placeholder="{{ __('Registration number') }}" value="{{ old('registration_number') }}" maxlength="10" required />
+                        </div>
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                        <label for="first_name" class="col-md-2 col-form-label">@lang('First Name')</label>
+
+                        <div class="col-md-10">
+                            <input type="text" name="first_name" class="form-control" placeholder="{{ __('First Name') }}" value="{{ old('first_name') }}" maxlength="100" required />
+                        </div>
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
                         <label for="name" class="col-md-2 col-form-label">@lang('Name')</label>
 
                         <div class="col-md-10">
                             <input type="text" name="name" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name') }}" maxlength="100" required />
+                        </div>
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                        <label for="phone" class="col-md-2 col-form-label">@lang('Phone number')</label>
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupPrepend">+221</span>
+                                </div>
+                                <input type="number" name="phone" class="form-control" placeholder="77XXXXXXX" value="{{ old('phone') }}"  aria-describedby="inputGroupPrepend" required />
+                            </div>
                         </div>
                     </div><!--form-group-->
 
