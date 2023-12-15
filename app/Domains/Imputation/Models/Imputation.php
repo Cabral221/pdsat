@@ -10,6 +10,8 @@ class Imputation extends Model
 {
     use HasFactory;
 
+    protected $appends = ['agent'];
+
     protected $fillable = ['sick_name', 'first_name', 'last_name',
                             'email', 'phone', 'cni', 'registration_number',
                             'service', 'fonction', 'file', 'status', 'validation'];
@@ -27,6 +29,11 @@ class Imputation extends Model
         static::creating(function ($imputation) {
             $imputation->phone =  (int) (221 . $imputation->phone);
         });
+    }
+
+    public function getAgentAttribute() : String
+    {
+        return $this->first_name . ' ' . $this->last_name;
     }
 
     /**
