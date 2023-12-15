@@ -36,22 +36,27 @@
         </section><br/><br/>
         <section>
             <div class="t1">
-                    <div class="inline">
+                <div class="inline">
+                    @if ($imputation->sick_name)
                         <span class="prenom">Prenom et nom du malade</span>
                         <span class="vprenom">{{ $imputation->sick_name }}</span>
-                    </div>
-                    <div class="inline">
-                        <span class="prenom">Fonction</span>
-                        <span class="vprenom">{{ $imputation->fonction }}</span>
-                    </div>
-                    <div class="inline">
-                        <span class="prenom">Matricule de solde</span>
-                        <span class="vprenom">{{ $imputation->registration_number }}</span>
-                    </div>
-                    <div class="inline">
-                        <span class="prenom">Service</span>
-                        <span class="vprenom">{{ $imputation->service }}</span>
-                    </div>
+                    @else
+                        <span class="prenom">Prenom et nom de l'agent</span>
+                        <span class="vprenom">{{ $imputation->agent }}</span>
+                    @endif
+                </div>
+                <div class="inline">
+                    <span class="prenom">Fonction</span>
+                    <span class="vprenom">{{ $imputation->fonction }}</span>
+                </div>
+                <div class="inline">
+                    <span class="prenom">Matricule de solde</span>
+                    <span class="vprenom">{{ $imputation->registration_number }}</span>
+                </div>
+                <div class="inline">
+                    <span class="prenom">Service</span>
+                    <span class="vprenom">{{ $imputation->service }}</span>
+                </div>
             </div>
         </section>
     </section>

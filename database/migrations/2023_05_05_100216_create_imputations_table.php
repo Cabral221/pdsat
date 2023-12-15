@@ -19,7 +19,7 @@ class CreateImputationsTable extends Migration
             $table->float('load_employe')->default(0.2);
             $table->float('load_employer')->default(0.8);
 
-            $table->string('sick_name');
+            $table->string('sick_name')->nullable();
 
             $table->string('first_name');
             $table->string('last_name');

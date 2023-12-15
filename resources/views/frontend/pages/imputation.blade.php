@@ -25,13 +25,17 @@
                                 <div class="form-group row">
                                     <label for="sick_name" class="col-sm-4 col-form-label">Penom et Nom de la personne malade</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control @error('sick_name') is-invalid @enderror" id="sick_name" name="sick_name" placeholder="Prénom et NOM de la personne malade">
-                                        @error('sick_name')
-                                            <span class="invalide-feedback">{{ $message }}</span>
-                                        @enderror
+                                        {{-- Le boutton Check moi-memem  --}}
                                         <div class="custom-control custom-switch m-1">
-                                            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                                            <label class="custom-control-label" for="customSwitch1">C'est Moi-même </label>
+                                            <input type="checkbox" class="custom-control-input" id="choice_sick" name="choice_sick" checked>
+                                            <label class="custom-control-label" for="choice_sick">C'est Moi-même </label>
+                                        </div>
+                                        {{-- end button check --}}
+                                        <div class="input_sick d-none" id="input_sick">
+                                            <input type="text" class="form-control @error('sick_name') is-invalid @enderror" id="sick_name" name="sick_name" placeholder="Prénom et NOM de la personne malade">
+                                            @error('sick_name')
+                                                <span class="invalide-feedback">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -115,3 +119,32 @@
         </div><!--row-->
     </div><!--container-->
 @endsection
+
+
+@push('after-scripts')
+    <script type="text/javascript">
+
+        $(document).ready(function ()  {
+            $('#choice_sick').on('click', (e) => {
+                // e.preventDefault()
+                console.log($('#choice_sick').prop('checked'))
+                if($('#choice_sick').prop('checked') == false){
+                    // Si c est pas cocher , on affiche le input text
+                    // avec attr : required
+                    $('#input_sick').toggleClass('d-none')
+                    $('#sick_name').prop('required', true)
+
+                }else{
+                    // si c est cocher , on cache le input
+                    // sans attr : required
+                    // remove value
+                    $('#input_sick').toggleClass('d-none')
+                    $('#input_sick').value('')
+                    $('#sick_name').prop('required', false)
+                }
+
+            })
+        });
+
+    </script>
+@endpush

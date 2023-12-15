@@ -24,7 +24,6 @@ class ImputationController extends Controller
 
         // Valider les donnees
         $request->validate([
-            'sick_name' => 'required|string',
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => 'required|email',
@@ -33,6 +32,8 @@ class ImputationController extends Controller
             'service' => 'required|string',
             'fonction' => 'required|string',
         ]);
+
+        if(!$request->choice_sick) $request->validate(['sick_name' => 'required|string']);
 
         // Enregistrer dans la base de données
         $imputation = $imputationService->create($request->all());
