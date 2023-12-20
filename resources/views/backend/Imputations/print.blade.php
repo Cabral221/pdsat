@@ -7,7 +7,7 @@
 
     <title>Imputation</title>
     <!-- Custom Style-->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/imputation.css') }}">
 </head>
 <body class="bod">
     <section class="entete">
