@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Domains\Auth\Models\User;
 use App\Http\Controllers\Controller;
@@ -15,7 +16,9 @@ class ImputationController extends Controller
 
     public function index()
     {
-        return view('frontend.pages.imputation');
+        $services = Service::all();
+
+        return view('frontend.pages.imputation', compact('services'));
     }
 
     public function store(Request $request, ImputationService $imputationService)
@@ -29,7 +32,7 @@ class ImputationController extends Controller
             'email' => 'required|email',
             'phone' => 'required|integer',
             'registration_number' => 'required|string',
-            'service' => 'required|string',
+            'service_id' => 'required|integer',
             'fonction' => 'required|string',
         ]);
 

@@ -27,7 +27,7 @@ class CreateImputationsTable extends Migration
             $table->bigInteger('phone');
 
             $table->string('registration_number');
-            $table->string('service');
+            $table->unsignedBigInteger('service_id')->index();
             $table->string('fonction');
 
             $table->string('file')->nullable();
@@ -35,6 +35,8 @@ class CreateImputationsTable extends Migration
             $table->boolean('validation')->default(false);
             $table->boolean('status')->default(false);
             $table->timestamps();
+
+            $table->foreign('service_id')->references('id')->on('services');
         });
     }
 

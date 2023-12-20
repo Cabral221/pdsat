@@ -49,7 +49,7 @@
                         </div>
                         <div class="d-flex justify-content-between mb-2">
                             <span class="">Service</span>
-                            <span class="font-weight-bold">{{ $imputation->service }}</span>
+                            <span class="font-weight-bold">{{ $imputation->service->libele }}</span>
                         </div>
                         <div class="d-flex justify-content-between mb-2">
                             <span class="">Email</span>
@@ -80,7 +80,7 @@
                         {{-- Renvoi de l'imputation par mail --}}
                         <a href="{{ route('admin.imputations.resend', $imputation) }}" class="btn btn-primary">Renvoyer par mail</a>
                     @else
-                        <a href="{{ route('admin.imputations.print', $imputation) }}" class="btn btn-warning"><span class="cil-print btn-icon mr-2"></span> Imprimer</a>
+                        <a href="{{ route('admin.imputations.print', $imputation) }}" class="btn btn-warning" target="_blank"><span class="cil-print btn-icon mr-2"></span> Imprimer</a>
                         {{-- <a href="#" class="btn btn-secondary"><span class="cil-print btn-icon mr-2"></span> Charger</a> --}}
                         <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#finalImputationModal" data-whatever="@fat">Envoyez l'imputation</button>
                         {{-- Option desactiver demande --}}

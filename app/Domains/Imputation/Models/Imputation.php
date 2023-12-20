@@ -2,6 +2,7 @@
 
 namespace App\Domains\Imputation\Models;
 
+use App\Models\Service;
 use Illuminate\Database\Eloquent\Model;
 use Database\Factories\ImputationFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,7 +15,7 @@ class Imputation extends Model
 
     protected $fillable = ['sick_name', 'first_name', 'last_name',
                             'email', 'phone', 'cni', 'registration_number',
-                            'service', 'fonction', 'file', 'status', 'validation'];
+                            'service_id', 'fonction', 'file', 'status', 'validation'];
 
     public const LOAD_EMPLOYE = 0.2;
     public const LOAD_EMPLOYER = 0.8;
@@ -55,5 +56,11 @@ class Imputation extends Model
     protected static function newFactory()
     {
         return ImputationFactory::new();
+    }
+
+
+    public function service()
+    {
+        return $this->belongsTo(service::class, 'service_id');
     }
 }

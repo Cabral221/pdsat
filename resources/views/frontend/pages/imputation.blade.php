@@ -94,8 +94,13 @@
                                 <div class="form-group row">
                                     <label for="service" class="col-sm-4 col-form-label">Service</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control @error('service') is-invalid @enderror" id="service" name="service" placeholder="Ex : Cellule Informatique">
-                                        @error('service')
+                                        <select name="service_id" id="service" class="form-control @error('service_id') is-invalid @enderror">
+                                            <option value="" default>Selectionner votre service</option>
+                                            @foreach ($services as $service)
+                                                <option value="{{ $service->id }}">{{ $service->libele }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('service_id')
                                             <span class="invalid-feedback">{{ $message }}</span>
                                         @enderror
                                     </div>

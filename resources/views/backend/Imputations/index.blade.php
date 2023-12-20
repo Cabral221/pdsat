@@ -75,7 +75,7 @@
                             <td>{{ $imputation->first_name }}</td>
                             <td>{{ $imputation->last_name }}</td>
                             <td>{{ $imputation->fonction }}</td>
-                            <td>{{ $imputation->service }}</td>
+                            <td>{{ $imputation->service->libele }}</td>
                             <td>
                                 @if ($imputation->validation == false)
                                     <span class="badge badge-secondary">En attente de validation</span>
