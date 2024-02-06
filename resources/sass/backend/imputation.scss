@@ -266,7 +266,8 @@ font-size: 1.4rem;
 }
 
 div.inline{
-    display: block;
+    display: flex;
+    flex: 1;
 }
 
 div.inline > span {
@@ -276,11 +277,7 @@ div.inline > span {
 .inline > span{
     font-size: 1rem;
 }
-.t1 td{
-    font-family: 'Tahoma';
-    font-size: 14px;
-    word-spacing: 0.5px;
-}
+
 .ftext{
     color: #000000;
     text-align: center;

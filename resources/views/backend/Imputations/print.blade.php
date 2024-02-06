@@ -57,8 +57,8 @@
                     <span class="prenom">Matricule de solde : </span>
                     <span class="vprenom">{{ $imputation->registration_number }}</span>
                 </div>
-                <div class="inline">
-                    <span class="prenom">Service : </span>
+                <div class="inline" style="max-width:700px;">
+                    <span class="prenom">Service :</span>
                     <span class="vprenom">{{ $imputation->service->libele }}</span>
                 </div>
             </div>
@@ -80,4 +80,9 @@
         <p class="ftext">Ministère du Développement communautaire, de la Solidarité nationale et de l'Equité sociale et territoriale Bâtiment B - Deuxième Sphère Ministérielle de Diamniadio - Dakar</p>
     </footer>
 </body>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        window.print()
+     });
+</script>
 </html>

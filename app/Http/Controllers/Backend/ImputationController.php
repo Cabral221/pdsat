@@ -77,8 +77,8 @@ class ImputationController extends Controller
     {
         $nomFichier = "Imputation-Budgetaire-" . $imputation->registration_number . ".pdf";
         $pdf = $imputationService->getPrint($imputation);
-
-        return $pdf->stream();
+        return $pdf;
+        // return $pdf->stream();
     }
 
     public function download(Imputation $imputation)

@@ -50,7 +50,8 @@ class ImputationService extends BaseService
 
     public function getPrint(Imputation $imputation)
     {
-       return  Pdf::loadView('backend.imputations.print',compact('imputation'));
+        return view('backend.imputations.print',compact('imputation'));
+    //    return  Pdf::loadView('backend.imputations.print',compact('imputation'));
     }
 
 }
