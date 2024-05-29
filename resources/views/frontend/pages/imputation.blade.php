@@ -6,9 +6,6 @@
 @section('content')
     <div class="container py-4">
         <div class="row justify-content-center">
-            <div class="card bg-dark text-white border-0">
-                <img class="card-img" src="{{ asset('img/logo-mdcsnest-h.PNG') }}" alt="Card image">
-            </div>
 
             <div class="col-md-9">
                 <x-frontend.card>
@@ -28,7 +25,7 @@
                                         {{-- Le boutton Check moi-memem  --}}
                                         <div class="custom-control custom-switch m-1">
                                             <input type="checkbox" class="custom-control-input" id="choice_sick" name="choice_sick" checked>
-                                            <label class="custom-control-label" for="choice_sick">C'est Moi-même </label>
+                                            <label class="custom-control-label" for="choice_sick">Moi-même</label>
                                         </div>
                                         {{-- end button check --}}
                                         <div class="input_sick d-none" id="input_sick">
@@ -116,7 +113,7 @@
                                 </div>
                             </fieldset>
 
-                            <button type="submit" class="btn btn-block btn-primary">Soumettre</button>
+                            <button type="submit" class="btn btn-block btn-success">Soumettre</button>
                         </form>
                     </x-slot>
                 </x-frontend.card>
