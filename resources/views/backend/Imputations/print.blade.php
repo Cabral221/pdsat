@@ -90,7 +90,7 @@
     </footer>
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', () => {
-            // window.print()
+            window.print()
         })
     </script>
 </body>
