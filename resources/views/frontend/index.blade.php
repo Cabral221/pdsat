@@ -24,7 +24,7 @@
                     <!-- Column -->
                     <!-- Column -->
                     <div class="col-md-3">
-                        <a href="#" class="card card-service">
+                        <a href="{{ route('frontend.mission.index') }}" class="card card-service">
                             <img src="{{ asset('images/sante.jpg') }}" alt="card image" class="card-img-top">
                             <div class="card-body text-center">
                                 <h5 class="card-title text-success">Ordre de Mission</h5>

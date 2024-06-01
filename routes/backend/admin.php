@@ -1,6 +1,7 @@
 <?php
 
 use Tabuna\Breadcrumbs\Trail;
+use App\Http\Controllers\Backend\MissionController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\ImputationController;
@@ -23,6 +24,8 @@ Route::get('imputations/{imputation}/resend', [ImputationController::class, 'res
 Route::post('imputations/{imputation}', [ImputationController::class, 'activeRequest'])->name('imputations.active');
 Route::get('imputations/{imputation}/print', [ImputationController::class, 'print'])->name('imputations.print');
 Route::get('imputations/{imputation}/download', [ImputationController::class, 'download'])->name('imputations.download');
+
+Route::get('missions', [MissionController::class , 'index'])->name('missions.index');
 
 Route::get('accounts', [AccountController::class, 'index'])->name('account.index');
 Route::get('accounts/{account}', [AccountController::class, 'show'])->name('account.show');
