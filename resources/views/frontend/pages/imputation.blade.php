@@ -10,7 +10,7 @@
             <div class="col-md-9">
                 <x-frontend.card>
                     <x-slot name="header">
-                       <h2> @lang('Demande d\'imputation Budgétaire au MDCSNEST')</h2>
+                       <h2> @lang('Demande d\'imputation Budgétaire')</h2>
                     </x-slot>
 
                     <x-slot name="body">

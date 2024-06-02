@@ -49,6 +49,6 @@ class ImputationController extends Controller
         // Alert success message and return redirect to index of imputation
         return redirect()
                 ->route('frontend.imputation.index')
-                ->with(['flash_success' => 'Votre Demande a bien été transmise au service Ressources Humaines du MDCSNEST']);
+                ->with(['flash_success' => 'Votre Demande a bien été transmise au service Ressources Humaines']);
     }
 }
