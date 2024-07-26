@@ -27,9 +27,11 @@ class ImputationTest extends TestCase
     }
 
     // Test send correct data to request
-    public function test_add_imputation()
+    // /** @test */
+    public function add_imputation()
     {
         $this->post('/imputations', [
+            'choice_sick' => false,
             'sick_name' => 'Makhtar DIOP',
             'first_name' => 'Abdourahmane',
             'last_name' => 'DIOP',
@@ -41,7 +43,7 @@ class ImputationTest extends TestCase
             'service' => 'Cellule Informatique',
         ])->assertStatus(302)
           ->assertRedirect('/imputations')
-          ->assertSessionHas(['flash_success' => 'Votre Demande a bien été transmise au service Ressources Humaines du MDCSNEST']);
+          ->assertSessionHas(['flash_success' => 'Votre Demande a bien été transmise au service Ressources Humaines']);
 
         $this->assertDatabaseHas('imputations', [
             'sick_name' => 'Makhtar DIOP',

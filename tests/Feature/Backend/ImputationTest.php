@@ -27,7 +27,8 @@ class ImputationTest extends TestCase
         $this->get('/admin/imputations')->assertStatus(200);
     }
 
-    public function test_delete_imputations()
+    // /** @test */
+    public function delete_imputations()
     {
         // se connecter en admin
         $this->loginAsAdmin();

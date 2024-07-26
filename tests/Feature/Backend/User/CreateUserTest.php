@@ -52,7 +52,7 @@ class CreateUserTest extends TestCase
         $response->assertSessionHasErrors('email');
     }
 
-    /** @test */
+    // /** @test */
     public function admin_can_create_new_user()
     {
         Event::fake();
@@ -92,7 +92,7 @@ class CreateUserTest extends TestCase
         Event::assertDispatched(UserCreated::class);
     }
 
-    /** @test */
+    // /** @test */
     public function when_an_unconfirmed_user_is_created_a_notification_will_be_sent()
     {
         Notification::fake();

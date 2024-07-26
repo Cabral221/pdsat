@@ -46,9 +46,10 @@ class ImputationController extends Controller
         // Notifier l'user par mail
         Mail::to($imputation->email)->send(new Acknowledgment());
 
+        dd(route('frontend.imputation.index'));
         // Alert success message and return redirect to index of imputation
         return redirect()
-                ->route('frontend.imputation.index')
+                ->route('/imputations')
                 ->with(['flash_success' => 'Votre Demande a bien été transmise au service Ressources Humaines']);
     }
 }
