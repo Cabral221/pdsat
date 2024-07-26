@@ -77,11 +77,15 @@
         <p class="dage">Direction de l'Administration Générale et de l'Equipement</p>
         <p class="sign">(Signature et cachet du Directeur)</p><br/><br/>
         <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+        @if (!$imputation->hasBeenSigned())
+        <form action="{{ $imputation->getSignatureRoute() }}" method="POST">
+        @csrf
+        <div style="text-align: center">
+            <x-creagia-signature-pad />
+        </div>
+       </form>
+    <script src="{{ asset('vendor/sign-pad/sign-pad.min.js') }}"></script>
+@endif
         <br/>
     </section>
     <footer>
