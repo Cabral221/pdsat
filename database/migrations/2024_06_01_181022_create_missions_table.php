@@ -33,8 +33,8 @@ class CreateMissionsTable extends Migration
             $table->timestamps();
 
             // Foreign key
-            // $table->foreign('depart_id')->references('id')->on('regions');
-            // $table->foreign('arrive_id')->references('id')->on('regions');
+            $table->foreign('depart_id')->references('id')->on('regions');
+            $table->foreign('arrive_id')->references('id')->on('regions');
             // $table->foreign('mission_id')->references('id')->on('type_missions');
         });
     }

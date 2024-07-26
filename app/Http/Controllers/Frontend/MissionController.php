@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Domains\Auth\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use App\Domains\Mission\Models\Region;
 use App\Domains\Mission\Mail\RequestMission;
 use App\Domains\Mission\Services\MissionService;
 
@@ -13,7 +14,8 @@ class MissionController extends Controller
 {
     public function index()
     {
-        return view('frontend.pages.mission');
+        $regions = Region::orderBy('libele', 'ASC')->get();
+        return view('frontend.pages.mission', compact('regions'));
     }
 
     public function store(Request $request, MissionService $missionService)
@@ -40,7 +42,6 @@ class MissionController extends Controller
         // $imputation = $imputationService->create($request->all());
 
         // Notifier l'admin par mail
-        // dd($request->genre);
         Mail::to(User::first()->email)->send(new RequestMission($mission->name, $mission->genre));
         // Notifier l'user par mail
         // ...

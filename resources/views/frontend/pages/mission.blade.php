@@ -16,7 +16,7 @@
                     <form id="form_request_mission" class="form" action="{{ route('frontend.mission.store') }}" method="POST">
                         @csrf
                         @method('POST')
-
+                        {{-- Genre --}}
                         <div class="form-group row">
                             <label for="genre" class="col-sm-4 col-form-label">Genre</label>
                             <div class="col-sm-8">
@@ -35,7 +35,7 @@
                                 @enderror
                             </div>
                         </div>
-
+                        {{-- Nom Complet --}}
                         <div class="form-group row">
                             <label for="name" class="col-sm-4 col-form-label">Prénom et Nom</label>
                             <div class="col-sm-8">
@@ -45,7 +45,7 @@
                                 @enderror
                             </div>
                         </div>
-
+                        {{-- Fonction --}}
                         <div class="form-group row">
                             <label for="fonction" class="col-sm-4 col-form-label">Fonction</label>
                             <div class="col-sm-8">
@@ -55,7 +55,7 @@
                                 @enderror
                             </div>
                         </div>
-
+                        {{-- Matricule de solde --}}
                         <div class="form-group row">
                             <label for="matricule" class="col-sm-4 col-form-label">Matricule de solde</label>
                             <div class="col-sm-8">
@@ -65,7 +65,7 @@
                                 @enderror
                             </div>
                         </div>
-
+                        {{-- Situation matrimoniale --}}
                         <div class="form-group row">
                             <label for="matrimonial" class="col-sm-4 col-form-label">Situation matrimoniale</label>
                             <div class="col-sm-8">
@@ -84,39 +84,37 @@
                                 @enderror
                             </div>
                         </div>
-
+                        {{-- Region de depart --}}
                         <div class="form-group row">
                             <label for="depart_id" class="col-sm-4 col-form-label">Départ</label>
                             <div class="col-sm-8">
                                 <select name="depart_id" id="depart" class="form-control @error('depart_id') is-invalid @enderror">
                                     <option value="" default>Selectionnez votre région de départ</option>
-                                    {{-- @foreach ($services as $service) --}}
-                                        <option value="1">Dakar</option>
-                                        <option value="2">Saint-Louis</option>
-                                    {{-- @endforeach --}}
+                                    @foreach ($regions as $region)
+                                        <option value="{{ $region->id }}">{{ $region->libele }}</option>
+                                    @endforeach
                                 </select>
                                 @error('depart_id')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
-
+                        {{-- Region d'arrivée --}}
                         <div class="form-group row">
                             <label for="arrive_id" class="col-sm-4 col-form-label">Arrivé</label>
                             <div class="col-sm-8">
                                 <select name="arrive_id" id="depart" class="form-control @error('arrive_id') is-invalid @enderror">
                                     <option value="" default>Selectionnez votre région d'arrivé</option>
-                                    {{-- @foreach ($services as $service) --}}
-                                        <option value="1">Dakar</option>
-                                        <option value="2">Saint-Louis</option>
-                                    {{-- @endforeach --}}
+                                    @foreach ($regions as $region)
+                                        <option value="{{ $region->id }}">{{ $region->libele }}</option>
+                                    @endforeach
                                 </select>
                                 @error('arrive_id')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
-
+                        {{-- Motif de Mission --}}
                         <div class="form-group row">
                             <label for="mission_id" class="col-sm-4 col-form-label">Motif de la mission</label>
                             <div class="col-sm-8">
@@ -132,7 +130,7 @@
                                 @enderror
                             </div>
                         </div>
-
+                        {{-- Date de depart --}}
                         <div class="form-group row">
                             <label for="date_depart" class="col-sm-4 col-form-label">Date de départ</label>
                             <div class="col-sm-8">
@@ -142,7 +140,7 @@
                                 @enderror
                             </div>
                         </div>
-
+                        {{-- Date d'arrivé --}}
                         <div class="form-group row">
                             <label for="date_arrive" class="col-sm-4 col-form-label">Date d'arrivé</label>
                             <div class="col-sm-8">
@@ -152,7 +150,7 @@
                                 @enderror
                             </div>
                         </div>
-
+                        {{-- Matricule de vehicule --}}
                         <div class="form-group row">
                             <label for="vehicule" class="col-sm-4 col-form-label">Matricule véhicule</label>
                             <div class="col-sm-8">
@@ -162,7 +160,7 @@
                                 @enderror
                             </div>
                         </div>
-
+                        {{-- Carburant --}}
                         <div class="form-group row">
                             <label for="carburant" class="col-sm-4 col-form-label">Avec carburant</label>
                             <div class="col-sm-8">
@@ -181,7 +179,7 @@
                                 @enderror
                             </div>
                         </div>
-
+                        {{-- Nombre de personne à bord --}}
                         <div class="form-group row">
                             <label for="nombre_personne" class="col-sm-4 col-form-label">Nombre de personne à bord</label>
                             <div class="col-sm-8">
