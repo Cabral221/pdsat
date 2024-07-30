@@ -79,11 +79,11 @@
         <!-- @if (!$imputation->hasBeenSigned())
         <form action="{{ $imputation->getSignatureRoute() }}" method="POST">
         @csrf
-        <div style="text-align: center">
+        <div style="text-align: right">
             <x-creagia-signature-pad />
         </div>
-       </form>
-    <script src="{{ asset('vendor/sign-pad/sign-pad.min.js') }}"></script>
+         </form>
+        <script src="{{ asset('vendor/sign-pad/sign-pad.min.js') }}"></script>
         @endif -->
         <div class="signer">
 
