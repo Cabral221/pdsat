@@ -2,14 +2,15 @@
 
 namespace App\Domains\Auth\Http\Controllers\Backend\User;
 
-use App\Domains\Auth\Http\Requests\Backend\User\DeleteUserRequest;
-use App\Domains\Auth\Http\Requests\Backend\User\EditUserRequest;
-use App\Domains\Auth\Http\Requests\Backend\User\StoreUserRequest;
-use App\Domains\Auth\Http\Requests\Backend\User\UpdateUserRequest;
+use App\Models\Service;
 use App\Domains\Auth\Models\User;
-use App\Domains\Auth\Services\PermissionService;
 use App\Domains\Auth\Services\RoleService;
 use App\Domains\Auth\Services\UserService;
+use App\Domains\Auth\Services\PermissionService;
+use App\Domains\Auth\Http\Requests\Backend\User\EditUserRequest;
+use App\Domains\Auth\Http\Requests\Backend\User\StoreUserRequest;
+use App\Domains\Auth\Http\Requests\Backend\User\DeleteUserRequest;
+use App\Domains\Auth\Http\Requests\Backend\User\UpdateUserRequest;
 
 /**
  * Class UserController.
@@ -58,7 +59,8 @@ class UserController
      */
     public function create()
     {
-        return view('backend.auth.user.create')
+        $services = Service::all();
+        return view('backend.auth.user.create', compact('services'))
             ->withRoles($this->roleService->get())
             ->withCategories($this->permissionService->getCategorizedPermissions())
             ->withGeneral($this->permissionService->getUncategorizedPermissions());
@@ -73,7 +75,10 @@ class UserController
      */
     public function store(StoreUserRequest $request)
     {
-        $user = $this->userService->store($request->validated());
+        // dd($request->all());
+        // dd($request->all());
+      
+        $user = $this->userService->store($request->all());
 
         return redirect()->route('admin.auth.user.show', $user)->withFlashSuccess(__('The user was successfully created.'));
     }

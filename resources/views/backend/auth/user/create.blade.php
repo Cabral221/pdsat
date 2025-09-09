@@ -37,10 +37,26 @@
                     </div><!--form-group-->
 
                     <div class="form-group row">
-                        <label for="first_name" class="col-md-2 col-form-label">@lang('First Name')</label>
+                        <label for="service_id" class="col-md-2 col-form-label">@lang('Service')</label>
 
                         <div class="col-md-10">
-                            <input type="text" name="first_name" class="form-control" placeholder="{{ __('First Name') }}" value="{{ old('first_name') }}" maxlength="100" required />
+                            <select name="service_id" id="service" class="form-control @error('service_id') is-invalid @enderror">
+                                <option value="" default>Service affecté</option>
+                                @foreach ($services as $service)
+                                    <option value="{{ $service->id }}">{{ $service->libele }}</option>
+                                @endforeach
+                            </select>
+                            @error('service_id')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                        <label for="first_name" class="col-md-2 col-form-label">@lang('Prénom')</label>
+
+                        <div class="col-md-10">
+                            <input type="text" name="first_name" class="form-control" placeholder="{{ __('Prénom') }}" value="{{ old('first_name') }}" maxlength="100" required />
                         </div>
                     </div><!--form-group-->
 

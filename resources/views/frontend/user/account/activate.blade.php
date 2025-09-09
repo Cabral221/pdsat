@@ -15,7 +15,7 @@
                     <div class="form-group row">
                         <label for="registration_number" class="col-sm-4 col-from-label">Matricule de solde</label>
                         <div class="col-sm-8">
-                            <input type="text" name="registration_number" id="registration_number" class="form-control @error('registration_number') is-invalid @enderror">
+                            <input type="text" name="registration_number" id="registration_number" class="form-control @error('registration_number') is-invalid @enderror" value="{{ old('registration_number') ?? '' }}">
                             @error('registration_number')
                                 <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
@@ -24,7 +24,7 @@
                     <div class="form-group row">
                         <label for="email" class="col-sm-4 col-form-label">Email</label>
                         <div class="col-sm-8">
-                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="email@exemple.com">
+                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="email@exemple.com" value="{{ old('email') ?? '' }}" >
                             @error('email')
                                 <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
@@ -37,7 +37,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroupPrepend">+221</span>
                                 </div>
-                                <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" id="phone" placeholder="770001122" aria-describedby="inputGroupPrepend">
+                                <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" id="phone" placeholder="770001122" aria-describedby="inputGroupPrepend" value="{{ old('phone') ?? '' }}">
                                 @error('phone')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
