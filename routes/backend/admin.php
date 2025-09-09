@@ -29,6 +29,7 @@ Route::get('missions', [MissionController::class , 'index'])->name('missions.ind
 
 Route::get('accounts', [AccountController::class, 'index'])->name('account.index');
 Route::get('accounts/{account}', [AccountController::class, 'show'])->name('account.show');
+Route::get('accounts/{account}/activate', [AccountController::class, 'activate'])->name('account.activate');
 
 Route::get('services', [ServiceController::class , 'index'])->name('services.index');
 Route::post('services', [ServiceController::class , 'store'])->name('services.store');
