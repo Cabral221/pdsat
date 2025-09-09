@@ -26,7 +26,10 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
+            'registration_number' => Str::random(8),
+            'phone' => random_int(700000000, 789999999),
             'type' => $this->faker->randomElement([User::TYPE_ADMIN, User::TYPE_USER]),
+            'first_name' => $this->faker->name(),
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),

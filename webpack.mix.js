@@ -16,7 +16,6 @@ mix.setPublicPath('public')
     .vue()
     .sass('resources/sass/frontend/app.scss', 'css/frontend.css')
     .sass('resources/sass/backend/app.scss', 'css/backend.css')
-    .sass('resources/sass/backend/imputation.scss', 'css/imputation.css')
     .js('resources/js/frontend/app.js', 'js/frontend.js')
     .js('resources/js/backend/app.js', 'js/backend.js')
     .extract([

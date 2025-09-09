@@ -3,7 +3,6 @@
 namespace App\Domains\Imputation\Services;
 
 use App\Services\BaseService;
-use Barryvdh\DomPDF\Facade\Pdf;
 use App\Domains\Imputation\Models\Imputation;
 
 /**

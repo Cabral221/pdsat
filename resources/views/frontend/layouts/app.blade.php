@@ -30,7 +30,7 @@
         </main>
 
         <div class="footer container">
-            <div class="text-center">MDCSNEST</div>
+            <div class="text-center">MINISTERE DE LA FAMILLE ET DES SOLIDARITES</div>
         </div>
     </div><!--app-->
 

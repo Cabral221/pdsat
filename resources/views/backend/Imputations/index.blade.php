@@ -8,36 +8,41 @@
         <x-slot name="header">Service d'Imputation Budgétaire</x-slot>
         <x-slot name="body">
             <div class="row">
-                <div class="col-sm-4">
-                    <div class="card bg-primary text-white">
+                <div class="col-sm-6">
+                <div class="card bg-primary text-white">
                         <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <div><h2>Demandes</h2></div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div><h5>Total Demandes :</h5></div>
                                 <div><h1 class="text-right">{{ $stats['total'] }}</h1></div>
                             </div>
-                            <hr>
-                            <div class="d-flex justify-content-between">
-                                <span>Demandes en attentes de validation : </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card bg-dark text-white">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div><h5>En attentes de validation :</h5></div>
                                 <span><h2>{{ $stats['inactive'] }}</h2></span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                     <div class="card bg-warning text-white">
                         <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <div><h2>Demandes en Signatures</h2></div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div><h5>En attente de signatures :</h5></div>
                                 <div><h1 class="text-right">{{ $stats['signature'] }}</h1></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                     <div class="card bg-success text-white">
                         <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <div><h2>Demandes finalisées</h2></div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div><h5>Imputation livrées :</h5></div>
                                 <div><h1 class="text-right">{{ $stats['final'] }}</h1></div>
                             </div>
                         </div>
@@ -88,7 +93,7 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ route('admin.imputations.show', $imputation) }}" class="btn btn-primary"> <span class="cil-eye btn-icon mr-2"></span> Voir</a>
+                                <a href="{{ route('admin.imputations.show', $imputation) }}" class="btn btn-primary"> <span class="cil-eye btn-icon mr-2"></span> Examiner</a>
                             </td>
                         </tr>
                     @endforeach

@@ -4,6 +4,7 @@ use Tabuna\Breadcrumbs\Trail;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\TermsController;
 use App\Http\Controllers\Frontend\ImputationController;
+use App\Http\Controllers\Frontend\MissionController;
 
 /*
  * Frontend Controllers
@@ -23,5 +24,10 @@ Route::get('terms', [TermsController::class, 'index'])
     });
 
 
+// Routes frontend des imputations
 Route::get('imputations', [ImputationController::class, 'index'])->name('imputation.index');
 Route::post('imputations', [ImputationController::class, 'store'])->name('imputation.store');
+
+// Routes frontend des ordres de mission
+Route::get('missions', [MissionController::class, 'index'])->name('mission.index');
+Route::post('missions', [MissionController::class, 'store'])->name('mission.store');

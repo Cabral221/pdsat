@@ -73,12 +73,9 @@ class ImputationController extends Controller
         return redirect()->route('admin.imputations.index');
     }
 
-    public function print(Imputation $imputation, ImputationService $imputationService)
+    public function print(Imputation $imputation)
     {
-        $nomFichier = "Imputation-Budgetaire-" . $imputation->registration_number . ".pdf";
-        $pdf = $imputationService->getPrint($imputation);
-        return $pdf;
-        // return $pdf->stream();
+        return view('backend.imputations.print', compact('imputation'));
     }
 
     public function download(Imputation $imputation)
