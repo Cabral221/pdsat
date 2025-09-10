@@ -117,6 +117,9 @@ class UserService extends BaseService
         try {
             $user = $this->createUser([
                 'type' => $data['type'],
+                'registration_number' => $data['registration_number'],
+                'phone' => $data['phone'],
+                'first_name' => $data['first_name'],
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => $data['password'],
@@ -131,7 +134,7 @@ class UserService extends BaseService
             }
         } catch (Exception $e) {
             DB::rollBack();
-
+            // dd($e);
             throw new GeneralException(__('There was a problem creating this user. Please try again.'));
         }
 
@@ -323,8 +326,11 @@ class UserService extends BaseService
     {
         return $this->model::create([
             'type' => $data['type'] ?? $this->model::TYPE_USER,
+            'first_name' => $data['first_name'] ?? null,
             'name' => $data['name'] ?? null,
+            'registration_number' => $data['registration_number'] ?? null,
             'email' => $data['email'] ?? null,
+            'phone' => $data['phone'] ?? null,
             'password' => $data['password'] ?? null,
             'provider' => $data['provider'] ?? null,
             'provider_id' => $data['provider_id'] ?? null,
