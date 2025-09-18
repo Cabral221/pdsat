@@ -83,7 +83,7 @@ return [
              * (They can only be logged into one place at a time, all others will be logged out)
              * AuthenticateSession middleware must be enabled
              */
-            'single_login' => env('SINGLE_LOGIN', false),
+            'single_login' => env('SINGLE_LOGIN', true),
         ],
 
         'role' => [

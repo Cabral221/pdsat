@@ -65,8 +65,8 @@
                     <span class="prenom">Fonction : </span>
                     <span class="vprenom">{{ $imputation->fonction }}</span>
                 </div>
-                <div class="inline">
-                    <span class="prenom">Service : </span>
+                <div class="inline" style="max-width:700px;">
+                    <span class="prenom">Service :</span>
                     <span class="vprenom">{{ $imputation->service->libele }}</span>
                 </div>
             </div>
@@ -92,4 +92,9 @@
         })
     </script>
 </body>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        window.print()
+     });
+</script>
 </html>

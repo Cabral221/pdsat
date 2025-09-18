@@ -47,4 +47,10 @@ class ImputationService extends BaseService
         return Imputation::active()->orderBy('created_at', 'DESC')->paginate(10);
     }
 
+    public function getPrint(Imputation $imputation)
+    {
+        return view('backend.imputations.print',compact('imputation'));
+    //    return  Pdf::loadView('backend.imputations.print',compact('imputation'));
+    }
+
 }

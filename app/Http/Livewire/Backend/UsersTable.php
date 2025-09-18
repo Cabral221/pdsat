@@ -37,7 +37,7 @@ class UsersTable extends DataTableComponent
     /**
      * @param  string  $status
      */
-    public function mount($status = 'active'): void
+    public function mount($status = ''): void
     {
         $this->status = $status;
     }
@@ -53,7 +53,7 @@ class UsersTable extends DataTableComponent
             $query = $query->onlyTrashed();
         } elseif ($this->status === 'deactivated') {
             $query = $query->onlyDeactivated();
-        } else {
+        } elseif ($this->status === 'active') {
             $query = $query->onlyActive();
         }
 
@@ -99,9 +99,13 @@ class UsersTable extends DataTableComponent
         return [
             Column::make(__('Type'))
                 ->sortable(),
+            Column::make(__('Matricule'))
+                    ->sortable(),
             Column::make(__('Name'))
                 ->sortable(),
             Column::make(__('E-mail'), 'email')
+                ->sortable(),
+            Column::make(__('Phone'), 'phone')
                 ->sortable(),
             Column::make(__('Verified'), 'email_verified_at')
                 ->sortable(),

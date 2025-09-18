@@ -1,11 +1,12 @@
 <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
-    <div class="c-sidebar-brand d-lg-down-none">
-        <svg class="c-sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
-            <use xlink:href="{{ asset('img/brand/coreui.svg#full') }}"></use>
-        </svg>
-        <svg class="c-sidebar-brand-minimized" width="46" height="46" alt="CoreUI Logo">
+    <div class="c-sidebar-brand d-lg-down-none fs-5">
+        <span class="fs-5">MFS</span>
+        {{-- <svg class="c-sidebar-brand-full" width="118" height="46" alt="CoreUI Logo"> --}}
+            {{-- <use xlink:href="{{ asset('img/brand/coreui.svg#full') }}"></use> --}}
+        {{-- </svg> --}}
+        {{-- <svg class="c-sidebar-brand-minimized" width="46" height="46" alt="CoreUI Logo">
             <use xlink:href="{{ asset('img/brand/coreui.svg#signet') }}"></use>
-        </svg>
+        </svg> --}}
     </div><!--c-sidebar-brand-->
 
     <ul class="c-sidebar-nav">
@@ -34,6 +35,15 @@
                 :active="activeClass(Route::is('admin.services.index'), 'c-active')"
                 icon="c-sidebar-nav-icon cil-spreadsheet"
                 :text="__('Services/Structures')" />
+        </li>
+
+        <li class="c-sidebar-nav-item">
+            <x-utils.link
+                class="c-sidebar-nav-link"
+                :href="route('admin.account.index')"
+                :active="activeClass(Route::is('admin.account.index'), 'c-active')"
+                icon="c-sidebar-nav-icon cil-spreadsheet"
+                :text="__('Compte')" />
         </li>
 
         @if (

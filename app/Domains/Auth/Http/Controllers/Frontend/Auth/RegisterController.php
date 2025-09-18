@@ -6,6 +6,7 @@ use App\Rules\Captcha;
 use App\Models\Account;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Domains\Auth\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Domains\Auth\Services\UserService;
@@ -119,18 +120,17 @@ class RegisterController
             'registration_number' => 'required|string|unique:accounts',
             'email' => 'required|email|unique:accounts,email',
             'phone' => 'required|numeric|unique:accounts,phone',
-            'cni' => 'required|file|mimes:pdf',
+            'cni' => 'required|file|mimes:pdf,jpg,png,jpeg',
         ]);
-
 
         // Enregistrer la demande dans la base de données
         $account = $this->userService->activate($request->all());
 
         // Send notification/mail à l'admin GRH
-        $account->notify(new ActivateAccount($account->id));
+        User::first()->notify(new ActivateAccount($account->id));
+        // $account->notify(new ActivateAccount($account->id));
 
         return redirect()->route('frontend.index')
                 ->with(['flash_success' => "Votre demande d'activation de compte utilisateur a bien été transmis aux Services Ressources Humaines, Aprés validation vous recevrez vos identifiants de connexion par défaut !"]);
-
     }
 }
