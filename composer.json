@@ -11,7 +11,7 @@
     "require": {
         "php": "^7.4|^8.0",
         "arcanedev/log-viewer": "8.x",
-        "creagia/laravel-sign-pad": "^2.1",
+        "barryvdh/laravel-dompdf": "^2.0",
         "darkghosthunter/laraguard": "^3.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -101,7 +101,7 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-            "php-http/discovery": false
+            "php-http/discovery": true
         }
     },
     "minimum-stability": "dev",
