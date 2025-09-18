@@ -548,6 +548,15 @@ main .post-content .post-title a {
 }
 
 /*---------X---------Sidebar------------X-------*/
+
+/*-----------Signature-------*/
+.signer{
+  text-align: right;
+}
+.signer img{
+  height: 226.8px;
+  width: auto;
+}
 /*-------------------X----------Main Content-------X-------------------------*/
 /*-----------------------------------Footer--------------------------------*/
 footer.footer {

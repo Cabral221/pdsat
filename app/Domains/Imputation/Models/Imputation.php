@@ -6,10 +6,20 @@ use App\Models\Service;
 use Illuminate\Database\Eloquent\Model;
 use Database\Factories\ImputationFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Creagia\LaravelSignPad\Concerns\RequiresSignature;
+use Creagia\LaravelSignPad\Contracts\CanBeSigned;
+use Creagia\LaravelSignPad\Contracts\ShouldGenerateSignatureDocument;
+use Creagia\LaravelSignPad\Templates\BladeDocumentTemplate;
+use Creagia\LaravelSignPad\Templates\PdfDocumentTemplate;
+use Creagia\LaravelSignPad\SignatureDocumentTemplate;
+use Creagia\LaravelSignPad\SignaturePosition;
+
+
 
 class Imputation extends Model
 {
     use HasFactory;
+    use RequiresSignature;
 
     protected $appends = ['agent'];
 
@@ -62,5 +72,27 @@ class Imputation extends Model
     public function service()
     {
         return $this->belongsTo(service::class, 'service_id');
+    }
+
+
+    public function getSignatureDocumentTemplate(): SignatureDocumentTemplate
+    {
+        return new SignatureDocumentTemplate(
+            outputPdfPrefix: 'document', // optional
+            // template: new BladeDocumentTemplate('pdf/my-pdf-blade-template'), // Uncomment for Blade template
+            // template: new PdfDocumentTemplate(storage_path('pdf/template.pdf')), // Uncomment for PDF template
+            signaturePositions: [
+                 new SignaturePosition(
+                     signaturePage: 1,
+                     signatureX: 20,
+                     signatureY: 25,
+                 ),
+                 new SignaturePosition(
+                     signaturePage: 2,
+                     signatureX: 25,
+                     signatureY: 50,
+                 ),
+            ]               
+        );
     }
 }

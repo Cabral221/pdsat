@@ -10,11 +10,12 @@ use App\Domains\Auth\Http\Controllers\Backend\AccountController;
 // All route names are prefixed with 'admin.'.
 Route::redirect('/', '/admin/dashboard', 301);
 Route::get('dashboard', [DashboardController::class, 'index'])
-    ->name('dashboard')
+->name('dashboard')
     ->breadcrumbs(function (Trail $trail) {
         $trail->push(__('Home'), route('admin.dashboard'));
     });
-
+    
+Route::post('imputations/signature', [ImputationController::class, 'signer'])->name('imputations.signature');
 Route::get('imputations', [ImputationController::class , 'index'])->name('imputations.index');
 Route::delete('imputations/{imputation}', [ImputationController::class, 'delete'])->name('imputations.delete');
 Route::get('imputations/{imputation}', [ImputationController::class, 'show'])->name('imputations.show');
@@ -24,6 +25,7 @@ Route::get('imputations/{imputation}/resend', [ImputationController::class, 'res
 Route::post('imputations/{imputation}', [ImputationController::class, 'activeRequest'])->name('imputations.active');
 Route::get('imputations/{imputation}/print', [ImputationController::class, 'print'])->name('imputations.print');
 Route::get('imputations/{imputation}/download', [ImputationController::class, 'download'])->name('imputations.download');
+
 
 Route::get('missions', [MissionController::class , 'index'])->name('missions.index');
 

@@ -17,7 +17,7 @@
         <p class="minis">MINISTERE DE LA FAMIILE ET DES SOLIDARITES</p>
         <p class="etoile">********</p>
         <p class="direc">DIRECTION DE L'ADMINISTRATION GENERALE<br/>ET DE L'EQUIPEMENT</p>
-    </section><br/><br/><br/>
+    </section><br/><br/>
     <section class="contenu">
         <h2 class="titr">IMPUTATION BUDGETAIRE</h2>
         <h3 class="design"> DESIGNATION DU SERVICE</h3>
@@ -75,14 +75,20 @@
     <section class="pied">
         <p class="date">Dakar, le {{ Carbon\Carbon::now()->format('d/m/y'); }}</p>
         <p class="dage">Direction de l'Administration Générale et de l'Equipement</p>
-        <p class="sign">(Signature et cachet du Directeur)</p><br/><br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+        <p class="sign">(Signature et cachet du Directeur)</p>
+        <!-- @if (!$imputation->hasBeenSigned())
+        <form action="{{ $imputation->getSignatureRoute() }}" method="POST">
+        @csrf
+        <div style="text-align: right">
+            <x-creagia-signature-pad />
+        </div>
+         </form>
+        <script src="{{ asset('vendor/sign-pad/sign-pad.min.js') }}"></script>
+        @endif -->
+        <div class="signer">
+
+            <img  src="{{ asset('images/signature.jpeg') }}" alt="signature"/>
+        </div>
     </section>
     <footer>
         <hr id="tiret">
