@@ -29,7 +29,7 @@
                                         </div>
                                         {{-- end button check --}}
                                         <div class="input_sick d-none" id="input_sick">
-                                            <input type="text" class="form-control @error('sick_name') is-invalid @enderror" id="sick_name" name="sick_name" placeholder="Prénom et NOM de la personne malade">
+                                            <input type="text" class="form-control @error('sick_name') is-invalid @enderror" id="sick_name" name="sick_name" placeholder="Prénom et NOM de la personne malade" value="{{ old('sick_name') ?? null}}">
                                             @error('sick_name')
                                                 <span class="invalide-feedback">{{ $message }}</span>
                                             @enderror
@@ -42,7 +42,7 @@
                                 <div class="form-group row">
                                     <label for="first_name" class="col-sm-4 col-form-label">Prénom</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control @error('first_name') is-invalid @enderror" id="first_name" name="first_name" placeholder="Entrer votre prénom" required>
+                                        <input type="text" class="form-control @error('first_name') is-invalid @enderror" id="first_name" name="first_name" placeholder="Entrer votre prénom" required value="{{ old('first_name') ?? null }}">
                                         @error('first_name')
                                             <span class="invalid-feedback">{{ $message }}</span>
                                         @enderror
